@@ -114,7 +114,7 @@ MonoBehaviour:
   m_MinSize: {x: 911, y: 442}
   m_MaxSize: {x: 22006, y: 10021}
   vertical: 1
-  controlID: 167
+  controlID: 160
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 911, y: 442}
   m_MaxSize: {x: 22006, y: 10021}
   vertical: 0
-  controlID: 168
+  controlID: 161
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -186,8 +186,8 @@ MonoBehaviour:
     y: 0
     width: 679
     height: 510
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -214,8 +214,8 @@ MonoBehaviour:
     y: 510
     width: 679
     height: 221
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -292,8 +292,8 @@ MonoBehaviour:
     y: 0
     width: 276
     height: 731
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -363,9 +363,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.042691037, y: -0.08277705, z: 0.09312598}
+    m_Target: {x: 0.5591607, y: -1.6580459, z: 3.7439117}
     speed: 2
-    m_Value: {x: -0.042691037, y: -0.08277705, z: 0.09312598}
+    m_Value: {x: 0.5591607, y: -1.6580459, z: 3.7439117}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -411,13 +411,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.22781244, y: 0.5164349, z: -0.14476928, w: -0.8126741}
+    m_Target: {x: -0.14974368, y: -0.00385957, z: 0.00058515975, w: -0.98872113}
     speed: 2
-    m_Value: {x: -0.22781236, y: 0.5164347, z: -0.14476924, w: -0.8126738}
+    m_Value: {x: -0.14974308, y: -0.0038595549, z: 0.0005851574, w: -0.98871726}
   m_Size:
-    m_Target: 1.4540374
+    m_Target: 13.88214
     speed: 2
-    m_Value: 1.4540374
+    m_Value: 13.88214
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -626,7 +626,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 2ee6ffff46e6ffff18e7ffff20eaffff38eaffff0aebffffcaebffffe2ebffffb4ecffff9cedffffb4edffff86eeffff4eefffff66efffff38f0ffffd0f5ffffe8f5ffffbaf6ffff8ef7ffffa6f7ffff78f8ffff72fbffff50360000
+      m_ExpandedIDs: 4ae7ffff62e7ffff34e8ffff8aeaffffa2eaffffaceaffff44ebffff5cebffff2eecfffff8edffff10eeffffe4eeffff30f3ffff48f3ffff1af4ffffe4f4fffffcf4ffffcef5ffff70fbffff72fbffff263f0000583f0000f24100002e420000de4400001a45000092470000ce470000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -689,20 +689,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/GoogleARCore/Examples/Common/Prefabs
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/GoogleARCore/Examples/Common/Prefabs
+  - Assets
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\Javier Cordero\Desktop\Clases Universidad\VR\Test\ARCore_Test\ARCore_TestProj
+  m_LastProjectPath: C:\Users\Javier Cordero\Desktop\Clases Universidad\TFG\ARCore_Test\ARCore_TestProj
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 8a380000
-    m_LastClickedID: 14474
-    m_ExpandedIDs: 000000004c3800004e38000050380000523800005438000056380000
+    m_SelectedIDs: ae370000
+    m_LastClickedID: 14254
+    m_ExpandedIDs: 00000000ae370000b2370000b4370000b6370000b8370000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -730,7 +730,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000004c3800004e38000050380000523800005438000056380000
+    m_ExpandedIDs: 00000000ae370000b0370000b2370000b4370000b6370000b8370000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

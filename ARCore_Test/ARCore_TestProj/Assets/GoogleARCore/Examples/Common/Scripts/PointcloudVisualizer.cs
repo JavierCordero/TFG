@@ -117,7 +117,11 @@ namespace GoogleARCore.Examples.Common
 		/// </summary>
 		private LinkedList<PointInfo> m_CachedPoints;
 
-		private LineRenderer lr;
+		//private LineRenderer lr;
+
+		private GameObject camera;
+
+		public GameObject texture;
 
 		/// <summary>
 		/// The Unity Start() method.
@@ -125,7 +129,10 @@ namespace GoogleARCore.Examples.Common
 		public void Start()
 		{
 
-			lr = FindObjectOfType<LineRenderer>();
+			//lr = FindObjectOfType<LineRenderer>();
+			camera = Camera.main.gameObject;
+
+			texture = GameObject.FindGameObjectWithTag("DepthTexture");
 
 			m_MeshRenderer = GetComponent<MeshRenderer>();
 			m_Mesh = GetComponent<MeshFilter>().mesh;
@@ -332,13 +339,66 @@ namespace GoogleARCore.Examples.Common
 
 			Vector3[] vP = new Vector3[seg];
 
+			float[] distances = new float[seg];
+
+			Vector3 closestVertex, largestVertex;
+
+			float closestDistance = float.MaxValue, largestDistance = float.MinValue;
+
 			for (int i = 0; i < seg; i++)
 			{
+				float distance = Mathf.Abs(camera.transform.position.z - vertices[i].z);
+
+				if (distance > largestDistance)
+				{
+					largestDistance = distance;
+					largestVertex = vertices[i];
+				}
+				if (distance < closestDistance)
+				{
+					closestDistance = distance;
+					closestVertex = vertices[i];
+				}
+
 				vP[i] = vertices[i];
+				distances[i] = distance;
 			}
 
-			lr.positionCount = seg;
-			lr.SetPositions(vP);
+			//lr.positionCount = seg;
+			//lr.SetPositions(vP);
+
+
+			// Create a new 2x2 texture ARGB32 (32 bit with alpha) and no mipmaps
+			Texture2D tex = new Texture2D(300, 400, TextureFormat.ARGB32, false);
+
+
+			for(int i = 0; i < 300; i++)
+			{
+				for(int j = 0; j < 400; j++)
+				{
+					int intColor = (int)((distances[i] / largestDistance) * 255f);
+
+					string hexValue = intColor.ToString("X");
+
+					tex.SetPixel(i, j, new Color(hexValue));
+				}
+			}
+			// Apply all SetPixel calls
+			tex.Apply();
+
+			// connect texture to material of GameObject this script is attached to
+			texture.GetComponent<MeshRenderer>().material.mainTexture = tex;
+
+			//for (int i = 0; i < seg; i++)
+			//{
+			//	int intColor = (int)((distances[i] / largestDistance) * 255f);
+
+			//	Color c = new Color();
+			//	c.r = (byte)((intColor) & 0xFF);
+			//	c.g = (byte)((intColor >> 8) & 0xFF);
+			//	c.b = (byte)((intColor >> 16) & 0xFF);
+			//	c.a = 255;
+			//}
 
 		}
 
