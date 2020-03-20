@@ -124,13 +124,14 @@ namespace GoogleARCore.Examples.Common
 		public GameObject texture;
 
 		List<Vector3> vertices = new List<Vector3>();
+		List<GameObject> dots = new List<GameObject>();
+		private GameObject sphere;
 
 		/// <summary>
 		/// The Unity Start() method.
 		/// </summary>
 		public void Start()
 		{
-
 			//lr = FindObjectOfType<LineRenderer>();
 			camera = Camera.main.gameObject;
 
@@ -328,81 +329,70 @@ namespace GoogleARCore.Examples.Common
 		/// </summary>
 		private void _UpdateMesh()
 		{
-			m_Mesh.Clear();
-			m_Mesh.vertices = m_CachedPoints.Select(p => p.Position).ToArray();
-			m_Mesh.uv = m_CachedPoints.Select(p => p.Size).ToArray();
-			m_Mesh.SetIndices(Enumerable.Range(0, m_CachedPoints.Count).ToArray(),
-							  MeshTopology.Points, 0);
+			//ESTA ES LA PARTE DE ARCORE QUE NO VAMOS A UTILIZAR EN PRINCIPIO
+			//m_Mesh.Clear();
+			//m_Mesh.vertices = m_CachedPoints.Select(p => p.Position).ToArray();
+			//m_Mesh.uv = m_CachedPoints.Select(p => p.Size).ToArray();
+			//m_Mesh.SetIndices(Enumerable.Range(0, m_CachedPoints.Count).ToArray(),
+			//				  MeshTopology.Points, 0);
 
-			vertices.Clear();
-			
-			m_Mesh.GetVertices(vertices);
+			//HASTA AQUI LLEGA LA PARTE DE ARCORE QUE NO VAMOS A UTILIZAR EN PRINCIPIO
 
-			int seg = vertices.Count;
+			//------------------------------------------------------------------------------\\
 
-			Vector3[] vP = new Vector3[seg];
+			//foreach (GameObject g in dots)
+			//	DestroyImmediate(g);
 
-			float[] distances = new float[seg];
+			//vertices.Clear();
+			//vertices = m_CachedPoints.Select(p => p.Position).ToList();
 
-			Vector3 closestVertex, largestVertex;
+			//int seg = vertices.Count;
 
-			float closestDistance = float.MaxValue, largestDistance = float.MinValue;
+			//Vector3[] vP = new Vector3[seg];
 
-			for (int i = 0; i < seg; i++)
-			{
-				float distance = Mathf.Abs(camera.transform.position.z - vertices[i].z);
+			//float[] distances = new float[seg];
 
-				if (distance > largestDistance)
-				{
-					largestDistance = distance;
-					largestVertex = vertices[i];
-				}
-				if (distance < closestDistance)
-				{
-					closestDistance = distance;
-					closestVertex = vertices[i];
-				}
+			//Vector3 closestVertex, largestVertex;
 
-				vP[i] = vertices[i];
-				distances[i] = distance;
-			}
-
-			//lr.positionCount = seg;
-			//lr.SetPositions(vP);
-
-
-			// Create a new 2x2 texture ARGB32 (32 bit with alpha) and no mipmaps
-			//Texture2D tex = new Texture2D(300, 400, TextureFormat.ARGB32, false);
-
-
-			//for(int i = 0; i < 300; i++)
-			//{
-			//	for(int j = 0; j < 400; j++)
-			//	{
-			//		int intColor = (int)((distances[i] / largestDistance) * 255f);
-
-			//		string hexValue = intColor.ToString("X");
-
-			//		tex.SetPixel(i, j, new Color(hexValue));
-			//	}
-			//}
-			//// Apply all SetPixel calls
-			//tex.Apply();
-
-			//// connect texture to material of GameObject this script is attached to
-			//texture.GetComponent<MeshRenderer>().material.mainTexture = tex;
+			//float closestDistance = float.MaxValue, largestDistance = float.MinValue;
 
 			//for (int i = 0; i < seg; i++)
 			//{
-			//	int intColor = (int)((distances[i] / largestDistance) * 255f);
+			//	float distance = Mathf.Abs(camera.transform.position.z - vertices[i].z);
 
-			//	Color c = new Color();
-			//	c.r = (byte)((intColor) & 0xFF);
-			//	c.g = (byte)((intColor >> 8) & 0xFF);
-			//	c.b = (byte)((intColor >> 16) & 0xFF);
-			//	c.a = 255;
+			//	if (distance > largestDistance)
+			//	{
+			//		largestDistance = distance;
+			//		largestVertex = vertices[i];
+			//	}
+			//	if (distance < closestDistance)
+			//	{
+			//		closestDistance = distance;
+			//		closestVertex = vertices[i];
+			//	}
+
+			//	vP[i] = vertices[i];
+			//	distances[i] = distance;
+
+			//	GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+			//	sphere.transform.position = vertices[i];
+			//	sphere.transform.localScale = new Vector3(0.1f,0.1f,0.1f);
+			//	sphere.AddComponent<Renderer>();
+			//	dots.Add(sphere);
+
 			//}
 
+			//int j = 0;
+			//foreach (GameObject g in dots)
+			//{
+			//	Material mat = g.GetComponent<Renderer>().material;
+
+			//	mat.color = Color.black;
+			//	Color c = mat.color;
+			//	c.a = (distances[j] / largestDistance) * 255;
+			//	j++;
+
+			//}
 		}
 
 		/// <summary>
