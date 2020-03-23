@@ -311,68 +311,69 @@ public class ArTest : MonoBehaviour
 	private void _UpdateMesh()
 	{
 		//ESTA ES LA PARTE DE ARCORE QUE NO VAMOS A UTILIZAR EN PRINCIPIO
-		//m_Mesh.Clear();
-		//m_Mesh.vertices = m_CachedPoints.Select(p => p.Position).ToArray();
-		//m_Mesh.uv = m_CachedPoints.Select(p => p.Size).ToArray();
-		//m_Mesh.SetIndices(Enumerable.Range(0, m_CachedPoints.Count).ToArray(),
-		//				  MeshTopology.Points, 0);
+		m_Mesh.Clear();
+		m_Mesh.vertices = m_CachedPoints.Select(p => p.Position).ToArray();
+		m_Mesh.uv = m_CachedPoints.Select(p => p.Size).ToArray();
+		m_Mesh.SetIndices(Enumerable.Range(0, m_CachedPoints.Count).ToArray(),
+						  MeshTopology.Points, 0);
 
 		//HASTA AQUI LLEGA LA PARTE DE ARCORE QUE NO VAMOS A UTILIZAR EN PRINCIPIO
 
 		//------------------------------------------------------------------------------\\
 
-		foreach (GameObject g in dots)
-			DestroyImmediate(g);
-		dots.Clear();
+		//foreach (GameObject g in dots)
+		//	DestroyImmediate(g);
+		//dots.Clear();
 
-		vertices.Clear();
-		vertices = m_CachedPoints.Select(p => p.Position).ToList();
+		//vertices.Clear();
+		//vertices = m_CachedPoints.Select(p => p.Position).ToList();
 
-		int seg = vertices.Count;
+		//int seg = vertices.Count;
 
-		Vector3[] vP = new Vector3[seg];
+		//Vector3[] vP = new Vector3[seg];
 
-		float[] distances = new float[seg];
+		//float[] distances = new float[seg];
 
-		Vector3 closestVertex, largestVertex;
+		//Vector3 closestVertex, largestVertex;
 
-		float closestDistance = float.MaxValue, largestDistance = float.MinValue;
+		//float closestDistance = float.MaxValue, largestDistance = float.MinValue;
 
-		for (int i = 0; i < seg; i++)
-		{
-			float distance = Mathf.Abs(camera.transform.position.z - vertices[i].z);
+		//for (int i = 0; i < seg; i++)
+		//{
+		//	float distance = Mathf.Abs(camera.transform.position.z - vertices[i].z);
 
-			if (distance > largestDistance)
-			{
-				largestDistance = distance;
-				largestVertex = vertices[i];
-			}
-			if (distance < closestDistance)
-			{
-				closestDistance = distance;
-				closestVertex = vertices[i];
-			}
+		//	if (distance > largestDistance)
+		//	{
+		//		largestDistance = distance;
+		//		largestVertex = vertices[i];
+		//	}
+		//	if (distance < closestDistance)
+		//	{
+		//		closestDistance = distance;
+		//		closestVertex = vertices[i];
+		//	}
 
-			vP[i] = vertices[i];
-			distances[i] = distance;
-		}
+		//	vP[i] = vertices[i];
+		//	distances[i] = distance;
+		//}
 
-		for (int i = 0; i < seg; i++)
-		{
-			GameObject sphere = Instantiate(spherePrefab);
-			sphere.transform.position = vertices[i];
-			sphere.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+		//for (int i = 0; i < seg; i++)
+		//{
+		//	GameObject sphere = Instantiate(spherePrefab);
+		//	sphere.transform.position = vertices[i];
+		//	sphere.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
 
-			Material mat = sphere.GetComponent<MeshRenderer>().materials[0];
+		//	Material mat = sphere.GetComponent<MeshRenderer>().materials[0];
 
-			Color c = Color.black;
-			c.r = (distances[i] / largestDistance);
+		//	Color c = Color.black;
+		//	c.r = (distances[i] / largestDistance);
+		//	c.g = c.r;
+		//	c.b = c.r;
+		//	sphere.GetComponent<MeshRenderer>().materials[0].color = c;
 
-			sphere.GetComponent<MeshRenderer>().materials[0].color = c;
+		//	dots.Add(sphere);
 
-			dots.Add(sphere);
-
-		}
+		//}
 	}
 
 	/// <summary>

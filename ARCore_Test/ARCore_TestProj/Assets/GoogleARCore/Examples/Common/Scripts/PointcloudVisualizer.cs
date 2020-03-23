@@ -117,23 +117,11 @@ namespace GoogleARCore.Examples.Common
 		/// </summary>
 		private LinkedList<PointInfo> m_CachedPoints;
 
-		//private LineRenderer lr;
-
-		private GameObject camera;
-
-		public GameObject texture;
-
 		/// <summary>
 		/// The Unity Start() method.
 		/// </summary>
 		public void Start()
 		{
-
-			//lr = FindObjectOfType<LineRenderer>();
-			camera = Camera.main.gameObject;
-
-			texture = GameObject.FindGameObjectWithTag("DepthTexture");
-
 			m_MeshRenderer = GetComponent<MeshRenderer>();
 			m_Mesh = GetComponent<MeshFilter>().mesh;
 			if (m_Mesh == null)
