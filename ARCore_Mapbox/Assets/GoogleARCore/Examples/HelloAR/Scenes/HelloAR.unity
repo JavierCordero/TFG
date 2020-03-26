@@ -241,8 +241,41 @@ PrefabInstance:
       propertyPath: m_MaxPointCount
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 114747870037459092, guid: 26558ae1d2e7243728486d789f984c53,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26558ae1d2e7243728486d789f984c53, type: 3}
+--- !u!1 &309986194 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1536853937296922, guid: 26558ae1d2e7243728486d789f984c53,
+    type: 3}
+  m_PrefabInstance: {fileID: 150429108}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &309986195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309986194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25dde499020b5474eb796ba31c65c8c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PointColor: {r: 0.12156863, g: 0.7372549, b: 0.8235294, a: 0}
+  EnablePopAnimation: 0
+  MaxPointsToAddPerFrame: 1
+  AnimationDuration: 0.3
+  m_MaxPointCount: 1000
+  m_DefaultSize: 5
+  m_PopSize: 50
+  texture: {fileID: 0}
+  spherePrefab: {fileID: 1908225566372361043, guid: a0ce878ca7e111c41a4e9a11bd9f8061,
+    type: 3}
 --- !u!1 &627916101
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,6 +333,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1026997606374626, guid: c539aa4fa1bac4b4da61761b0699b48b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4430574757597842, guid: c539aa4fa1bac4b4da61761b0699b48b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -330,7 +367,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4430574757597842, guid: c539aa4fa1bac4b4da61761b0699b48b, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c539aa4fa1bac4b4da61761b0699b48b, type: 3}
@@ -508,7 +545,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1394164186
 PrefabInstance:
@@ -547,7 +584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4461716624848968, guid: cf498fc35b538884db557f7a9a2c0ef9, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf498fc35b538884db557f7a9a2c0ef9, type: 3}
@@ -694,5 +731,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

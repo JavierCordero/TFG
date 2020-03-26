@@ -55,8 +55,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
-    - Class: 64
-      Script: {instanceID: 0}
     - Class: 84
       Script: {instanceID: 0}
     - Class: 89
@@ -106,8 +104,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13602}
     - Class: 115
-      Script: {instanceID: 0}
-    - Class: 120
       Script: {instanceID: 0}
     - Class: 128
       Script: {instanceID: 0}
@@ -438,7 +434,7 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
-      Hash: d6ce852b04c06d58d560ce4d59b664b4
+      Hash: d80decf816b39c56d5f370970ca63fdc
     assemblyName: Assembly-CSharp.dll
     namespaceName: GoogleARCore.Examples.Common
     className: PointcloudVisualizer
@@ -775,5 +771,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/GoogleARCore/Examples/HelloAR/Scenes/HelloAR.unity
-  playerPath: C:/Users/Javier Cordero/Desktop/Clases Universidad/TFG/AR_Core Test
-    Build/HelloARTest.apk
+  playerPath: C:/Users/Javier Cordero/Desktop/Test/Testapp.apk

@@ -46,7 +46,7 @@ MonoBehaviour:
     y: 0
     width: 1536
     height: 781
-  m_MinSize: {x: 875, y: 300}
+  m_MinSize: {x: 875, y: 492}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -111,10 +111,10 @@ MonoBehaviour:
     y: 30
     width: 1536
     height: 731
-  m_MinSize: {x: 911, y: 442}
-  m_MaxSize: {x: 22006, y: 10021}
+  m_MinSize: {x: 908, y: 442}
+  m_MaxSize: {x: 22003, y: 10021}
   vertical: 1
-  controlID: 160
+  controlID: 35
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -138,10 +138,10 @@ MonoBehaviour:
     y: 0
     width: 1536
     height: 731
-  m_MinSize: {x: 911, y: 442}
-  m_MaxSize: {x: 22006, y: 10021}
+  m_MinSize: {x: 908, y: 442}
+  m_MaxSize: {x: 22003, y: 10021}
   vertical: 0
-  controlID: 161
+  controlID: 36
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -214,8 +214,8 @@ MonoBehaviour:
     y: 510
     width: 679
     height: 221
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -240,8 +240,8 @@ MonoBehaviour:
     y: 0
     width: 247
     height: 731
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -363,9 +363,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.5591607, y: -1.6580459, z: 3.7439117}
+    m_Target: {x: 0, y: -1.6429996, z: 10.38}
     speed: 2
-    m_Value: {x: 0.5591607, y: -1.6580459, z: 3.7439117}
+    m_Value: {x: 0, y: -1.6429996, z: 10.38}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -415,9 +415,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: -0.14974308, y: -0.0038595549, z: 0.0005851574, w: -0.98871726}
   m_Size:
-    m_Target: 13.88214
+    m_Target: 19.398502
     speed: 2
-    m_Value: 13.88214
+    m_Value: 19.398502
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -626,7 +626,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 4ae7ffff62e7ffff34e8ffff8aeaffffa2eaffffaceaffff44ebffff5cebffff2eecfffff8edffff10eeffffe4eeffff30f3ffff48f3ffff1af4ffffe4f4fffffcf4ffffcef5ffff70fbffff72fbffff263f0000583f0000f24100002e420000de4400001a45000092470000ce470000
+      m_ExpandedIDs: b2f7ffffcaf7ffff9cf8ffff68fbffff70fbffff72fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -689,20 +689,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/GoogleARCore/Examples/Common/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/GoogleARCore/Examples/Common/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Javier Cordero\Desktop\Clases Universidad\TFG\ARCore_Test\ARCore_TestProj
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ae370000
-    m_LastClickedID: 14254
-    m_ExpandedIDs: 00000000ae370000b2370000b4370000b6370000b8370000
+    m_SelectedIDs: fa370000
+    m_LastClickedID: 14330
+    m_ExpandedIDs: 00000000ba370000bc370000be370000c0370000c2370000c4370000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -730,7 +730,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ae370000b0370000b2370000b4370000b6370000b8370000
+    m_ExpandedIDs: 00000000ba370000bc370000be370000c0370000c2370000c4370000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -782,7 +782,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 0}
+    m_ScrollPosition: {x: 0, y: 9}
     m_GridSize: 64
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 212
