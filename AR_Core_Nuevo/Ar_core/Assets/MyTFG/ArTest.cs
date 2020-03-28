@@ -114,6 +114,7 @@ public class ArTest : MonoBehaviour
 
 		m_MeshRenderer = GetComponent<MeshRenderer>();
 		m_Mesh = GetComponent<MeshFilter>().mesh;
+
 		if (m_Mesh == null)
 		{
 			m_Mesh = new Mesh();
@@ -315,11 +316,14 @@ public class ArTest : MonoBehaviour
 
 		//------------------------------------------------------------------------------\\
 
+		//Zona de limpia
 		foreach (GameObject g in dots)
+		{
 			DestroyImmediate(g);
+		}
 		dots.Clear();
-
 		vertices.Clear();
+
 		vertices = m_CachedPoints.Select(p => p.Position).ToList();
 
 		int seg = vertices.Count;
@@ -346,11 +350,13 @@ public class ArTest : MonoBehaviour
 			sphere.transform.position = vertices[i];
 			sphere.transform.localScale = new Vector3(ColorPointSize, ColorPointSize, ColorPointSize);
 
-			Material mat = sphere.GetComponent<MeshRenderer>().materials[0];
+			//MeshRenderer sphereRenderer = sphere.GetComponent<MeshRenderer>();
 
-			Color c = Color.black;
-			c.r = (distances[i] / largestDistance);
-			sphere.GetComponent<MeshRenderer>().materials[0].color = c;
+			//Material mat = sphereRenderer.materials[0];
+
+			//Color c = Color.black;
+			//c.r = (distances[i] / largestDistance);
+			//sphereRenderer.material.color = c;
 
 			dots.Add(sphere);
 		}
