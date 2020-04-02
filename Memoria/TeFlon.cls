@@ -40,7 +40,7 @@
 \usepackage{multirow}
 \usepackage{amsmath,amsthm,amssymb}
 \usepackage{booktabs}
-
+\usepackage{wrapfig}
 \usepackage{tikz}
 \usepackage{emptypage}
 \usepackage{esvect}
