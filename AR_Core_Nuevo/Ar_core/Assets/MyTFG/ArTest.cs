@@ -139,7 +139,7 @@ public class ArTest : MonoBehaviour
 		{
 			GameObject sphere = Instantiate(spherePrefab);
 			//sphere.transform.position = vertices[i];
-			//sphere.transform.localScale = new Vector3(ColorPointSize, ColorPointSize, ColorPointSize);
+			sphere.transform.localScale = new Vector3(ColorPointSize, ColorPointSize, ColorPointSize);
 			sphere.SetActive(false);
 
 			//MeshRenderer sphereRenderer = sphere.GetComponent<MeshRenderer>();
