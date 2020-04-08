@@ -134,6 +134,24 @@ public class ArTest : MonoBehaviour
 		m_MeshRenderer.SetPropertyBlock(m_PropertyBlock);
 
 		m_CachedPoints = new LinkedList<PointInfo>();
+
+		for (int i = 0; i < m_MaxPointCount; i++)
+		{
+			GameObject sphere = Instantiate(spherePrefab);
+			//sphere.transform.position = vertices[i];
+			sphere.transform.localScale = new Vector3(ColorPointSize, ColorPointSize, ColorPointSize);
+			sphere.SetActive(false);
+
+			//MeshRenderer sphereRenderer = sphere.GetComponent<MeshRenderer>();
+
+			//Material mat = sphereRenderer.materials[0];
+
+			//Color c = Color.black;
+			//c.r = (distances[i] / largestDistance);
+			//sphereRenderer.material.color = c;
+
+			dots.Add(sphere);
+		}
 	}
 
 	/// <summary>
@@ -317,49 +335,47 @@ public class ArTest : MonoBehaviour
 		//------------------------------------------------------------------------------\\
 
 		//Zona de limpia
-		foreach (GameObject g in dots)
+		//foreach (GameObject g in dots)
+		//{
+		//	DestroyImmediate(g);
+		//}
+		//dots.Clear();
+		foreach(GameObject g in dots)
 		{
-			DestroyImmediate(g);
+			if (g.activeSelf)
+				g.SetActive(false);
+			else break;
 		}
-		dots.Clear();
+
 		vertices.Clear();
 
 		vertices = m_CachedPoints.Select(p => p.Position).ToList();
 
-		int seg = vertices.Count;
+		Debug.Log(vertices.Count);
 
-		float[] distances = new float[seg];
-
-		float largestDistance = float.MinValue;
-
-		for (int i = 0; i < seg; i++)
-		{
-			float distance = Mathf.Abs(Vector3.Distance(camera.transform.position, vertices[i]));
-
-			if (distance > largestDistance)
-			{
-				largestDistance = distance;
-			}
-
-			distances[i] = distance;
+		for(int i = 0; i < vertices.Count; i++)
+		{	
+			dots[i].SetActive(true);
+			dots[i].transform.position = vertices[i];
 		}
 
-		for (int i = 0; i < seg; i++)
-		{
-			GameObject sphere = Instantiate(spherePrefab);
-			sphere.transform.position = vertices[i];
-			sphere.transform.localScale = new Vector3(ColorPointSize, ColorPointSize, ColorPointSize);
+		//int seg = vertices.Count;
 
-			//MeshRenderer sphereRenderer = sphere.GetComponent<MeshRenderer>();
+		//float[] distances = new float[seg];
 
-			//Material mat = sphereRenderer.materials[0];
+		//float largestDistance = float.MinValue;
 
-			//Color c = Color.black;
-			//c.r = (distances[i] / largestDistance);
-			//sphereRenderer.material.color = c;
+		//for (int i = 0; i < seg; i++)
+		//{
+		//	float distance = Mathf.Abs(Vector3.Distance(camera.transform.position, vertices[i]));
 
-			dots.Add(sphere);
-		}
+		//	if (distance > largestDistance)
+		//	{
+		//		largestDistance = distance;
+		//	}
+
+		//	distances[i] = distance;
+		//}
 	}
 
 	/// <summary>
