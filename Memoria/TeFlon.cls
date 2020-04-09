@@ -31,6 +31,9 @@
 \ifthenelse{\equal{#1}{si}}{
 \setmainfont{Times New Roman}}{}
   }
+  
+  
+ \usepackage{fixltx2e} 
 \usepackage[spanish]{babel}
 \usepackage[table,xcdraw]{xcolor}
 \usepackage[utf8]{inputenc}
