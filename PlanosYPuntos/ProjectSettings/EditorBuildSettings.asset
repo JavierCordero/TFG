@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/EscenaPlanos.unity
     guid: 4a4f1bd827534d94b9bbe0eacc2bf6b4
   m_configObjects:
-    com.unity.xr.arcore.PlayerSettings: {fileID: 11400000, guid: 266b9dc37e6927e499f2da4ab5933d2d,
+    com.unity.xr.arcore.PlayerSettings: {fileID: 11400000, guid: ef28154f1c6707d4593e499bb9382ec9,
       type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 431470d5da0df3549bf19d3fa2ad9777,
       type: 2}
