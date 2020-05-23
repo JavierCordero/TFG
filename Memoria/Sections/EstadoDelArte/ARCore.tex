@@ -1,0 +1,34 @@
+\parindent=0em
+\section{ARCore}
+\noindent
+
+ARCore es una plataforma de Google \cite{ARCoreOverview} enfocada en construir experiencias de realidad aumentada. Tiene distintas APIs (del inglés application programming interface) que permiten utilizar el teléfono para entender el mundo real e interactuar con el. Es la plataforma puntera utilizada para los dispositivos móviles con un sistema operativo Android, frente a la plataforma ArKit (para dispositivos iOS).\\
+
+Esta plataforma utiliza tres pilares fundamentales para integrar el contenido virtual en el mundo físico:
+
+\begin{enumerate}[label=\arabic*)]
+    \item \textbf{\textit{Motion tracking}:} Se trata de un proceso mediante el cual, cuando el teléfono se mueve, se hace uso de \textit{COM} (del inglés \textit{concurrent odometry and mapping}) para entender en qué posición se encuentra el dispositivo relativo al mundo real. ARCore utiliza además unos \textbf{puntos característicos} como elementos de referencia para detectar si se produce un cambio en la posición. Esta información se combina con los datos obtenidos por la unidad de medición inercial (mide la velocidad, orientación y fuerzas gravitacionales del aparato) para estimar la posición y orientación de la cámara.
+    
+     \item \textbf{\textit{Environmental understanding}:} ARCore utiliza concentraciones de estos puntos característicos mencionados anteriormente uniéndolos de manera horizontal o vertical para formar planos. Esta información se puede utilizar para colocar elementos en superficies lisas.
+     
+     \item \textbf{\textit{Light estimation}:} Para poder dar una iluminación a nuestros objetos virtuales acorde al mundo real, la plataforma detecta la información de la luz del entorno y realiza una estimación de la intensidad y el color.
+\end{enumerate}
+
+A la hora de colocar un elemento virtual en el mundo físico, cuando el usuario interactúa con la pantalla en un punto con coordenadas (x,y), se lanza un rayo desde la cámara del mundo virtual y se comprueba si ha intersecado con algún plano o punto característico. Si se ha producido esta intersección, la plataforma de Google crea \textbf{anclas} (posiciones en el mundo físico) para mantener el control de los objetos en el tiempo.\\
+
+Por ejemplo, si colocamos un cubo en una puerta y nos desplazamos, al volver a apuntar a la puerta podremos ver que el cubo sigue ahí. No solo se pueden utilizar estos anclas en un mismo dispositivo, sino que ARCore ofrece la API \textit{ARCore Cloud Anchor API} mediante la cual se guarda la posición de los anclas en la nube, de tal forma que varios móviles pueden observar el mismo objeto virtual colocado por una persona. Esto permite compartir los entornos con varios usuarios simultáneamente.\\
+
+Dado que los objetos virtuales pueden variar su posición, ARCore ha creado el concepto de \textit{\textbf{trackable}} (estos elementos son los planos y los puntos característicos) para poder mantener la relación de posición entre esos \textit{trackables} y el objeto virtual.\\
+
+%https://developers.googleblog.com/2019/12/blending-realities-with-arcore-depth-api.html
+
+Recientemente ARCore ha introducido la \textit{ARCore Depth API} lo cual supone un gran avance a la hora de calcular profundidades en el mundo virtual ya que funciona con una única cámara (antes se requerían dispositivos con grandes capacidades hardware). La profundidad es calculada mediante un algoritmo que toma múltiples fotos de distintos ángulos y estima la distancia a cada píxel. Esto permite a los desarrolladores aplicar la oclusión explicada en el capitulo blablamblabmkanorairmo\\
+
+Aunque esta API no es dependiente de cámaras o sensores específicos, la experiencia mejorará notablemente al utilizar dispositivos con un mejor hardware como sensores \textit{ToF} (del inglés time-of-flight) dado que permitirá activar la funcionalidad de la oclusión dinámica, es decir, poder hacer el efecto de oclusión con objetos en movimiento.\\
+
+Actualmente ARCore se puede utilizar en la plataforma de desarrollo Unity, en Unreal Engine o a través del entorno de desarrollo integrado Android Studio.
+
+
+
+
+
