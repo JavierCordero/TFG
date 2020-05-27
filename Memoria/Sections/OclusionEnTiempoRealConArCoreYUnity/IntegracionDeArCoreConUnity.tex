@@ -1,0 +1,10 @@
+\parindent=0em
+\section{Integración de ARCore con Unity}
+\noindent
+
+La integración de ARCore en Unity se realiaza mediante los llamadaos packages (paquetes) de Unity. 
+Dependiendo del tipo de efecto que queramos generar dentro de nuestra aplicación tendremos que dar uso de uno u otro por las diversas características que presentan.
+
+Evidentemente tenemos que descargar primero la SDK de ArCore de para Unity.
+
+Para nuestro caso, necesitamos la nube de puntos proporcionada por ARCore y explicada en el siguiente apartado, por lo que descargaremos e importaremos los paquetes ArCore, XR Legacy Input y multiplayer HLAPI. Dentro de las opciones de Build de Unity, establecemos la plataforma por defecto la de Android y añadimos la escena que queramos dentro de nuestra aplicación. En PlayerSettings, tenemos que quitar el tipo de renderizado Vulkan y añadir .NET 4X, así como establecer el mínimo Api Level a 24. Finalmente, habilitar ARCore supported dentro de PlayerSettings -> XRSettings.
