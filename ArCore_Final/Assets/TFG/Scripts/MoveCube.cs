@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class MoveCube : MonoBehaviour
 {
-	Vector3 v = new Vector3(0, 0, 0.05f);
+	public GameObject Cube, Camera;
 
-    public void cubeForward()
+	private void Update()
 	{
-		transform.localPosition += v;
-	}
+		foreach (Touch touch in Input.touches)
+		{
+			if (touch.phase == TouchPhase.Began)
+			{
+				Instantiate(Cube, Camera.transform.position, Quaternion.identity);
+			}
+		}
 
-	public void cubeBackward()
-	{
-		transform.localPosition -= v;
+		if(Input.GetMouseButtonDown(0))
+			Instantiate(Cube, Camera.transform.position, Quaternion.identity);
+
 	}
 
 }

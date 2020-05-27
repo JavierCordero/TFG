@@ -29,7 +29,8 @@ public class PointCloudEditor : MonoBehaviour
 	/// </summary>
 	[Tooltip("The maximum number of points to add per frame.")]
 	public int [] MaxPointsToAddPerFrame;
-	private int actualMaxPointPerFrameCount = 0;
+	[HideInInspector]
+	public int actualMaxPointPerFrameCount = 0;
 
 	/// <summary>
 	/// The time interval that the pop animation lasts in seconds.
@@ -42,7 +43,8 @@ public class PointCloudEditor : MonoBehaviour
 	/// </summary>
 	[Tooltip("The maximum number of points to show on the screen.")]
 	public int [] m_MaxPointCount;
-	private int actualMaxPointCount = 0;
+	[HideInInspector]
+	public int actualMaxPointCount = 0;
 
 	/// <summary>
 	/// The default size of the points.
@@ -101,7 +103,6 @@ public class PointCloudEditor : MonoBehaviour
 	/// </summary>
 	private LinkedList<PointInfo> m_CachedPoints;
 
-	private GameObject camera;
 	private float ColorPointSize = 0.01f;
 
 	List<Vector3> vertices = new List<Vector3>();
@@ -118,8 +119,6 @@ public class PointCloudEditor : MonoBehaviour
 	/// </summary>
 	public void Start()
 	{
-		camera = Camera.main.gameObject;
-
 		m_MeshRenderer = GetComponent<MeshRenderer>();
 		m_Mesh = GetComponent<MeshFilter>().mesh;
 
@@ -301,6 +300,14 @@ public class PointCloudEditor : MonoBehaviour
 
 				_AddPointToCache(point);
 			}
+
+			/*
+			for (int i = 0; i < Frame.PointCloud.PointCount; i++)
+			{
+				_AddPointToCache(Frame.PointCloud.GetPointAsStruct(i));
+			}
+			*/
+
 		}
 	}
 

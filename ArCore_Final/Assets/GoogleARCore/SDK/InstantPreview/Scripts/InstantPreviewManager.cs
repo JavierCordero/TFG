@@ -50,6 +50,7 @@ namespace GoogleARCoreInternal
     /// </summary>
     public static class InstantPreviewManager
     {
+
         /// <summary>
         /// Name of the Instant Preview plugin library.
         /// </summary>
@@ -84,13 +85,13 @@ namespace GoogleARCoreInternal
 
         private static HashSet<string> s_OneTimeWarnings = new HashSet<string>();
 
-        /// <summary>
-        /// Gets a value indicating whether Instant Preview is providing the ARCore platform for the
-        /// current environment.
-        /// </summary>
-        /// <value>Whether Instant Preview is providing the ARCore platform for the current
-        /// environment.</value>
-        public static bool IsProvidingPlatform
+		/// <summary>
+		/// Gets a value indicating whether Instant Preview is providing the ARCore platform for the
+		/// current environment.
+		/// </summary>
+		/// <value>Whether Instant Preview is providing the ARCore platform for the current
+		/// environment.</value>
+		public static bool IsProvidingPlatform
         {
             get
             {
@@ -324,21 +325,21 @@ namespace GoogleARCoreInternal
             IntPtr pixelBytes;
             int width;
             int height;
-            if (NativeApi.LockCameraTexture(out pixelBytes, out width, out height))
-            {
-                if (backgroundTexture == null || width != backgroundTexture.width ||
-                    height != backgroundTexture.height)
-                {
-                    backgroundTexture = new Texture2D(width, height, TextureFormat.BGRA32, false);
-                }
+			if (NativeApi.LockCameraTexture(out pixelBytes, out width, out height))
+			{
+				if (backgroundTexture == null || width != backgroundTexture.width ||
+					height != backgroundTexture.height)
+				{
+					backgroundTexture = new Texture2D(width, height, TextureFormat.BGRA32, false);
+				}
 
-                backgroundTexture.LoadRawTextureData(pixelBytes, width * height * 4);
-                backgroundTexture.Apply();
+				backgroundTexture.LoadRawTextureData(pixelBytes, width * height * 4);
+				backgroundTexture.Apply();
 
-                NativeApi.UnlockCameraTexture();
-            }
+				NativeApi.UnlockCameraTexture();
+			}
 
-            return true;
+			return true;
         }
 
         private static IEnumerator UpdateLoop(string adbPath)
@@ -426,7 +427,7 @@ namespace GoogleARCoreInternal
                     Graphics.Blit(screenTexture, bgrTexture);
                 }
 
-                var cameraTexture = Frame.CameraImage.Texture;
+				var cameraTexture = Frame.CameraImage.Texture;
                 if (!loggedAspectRatioWarning && cameraTexture != null)
                 {
                     var sourceWidth = cameraTexture.width;
@@ -446,7 +447,7 @@ namespace GoogleARCoreInternal
                     }
                 }
 
-                NativeApi.SendFrame(targetTexture.GetNativeTexturePtr());
+				NativeApi.SendFrame(targetTexture.GetNativeTexturePtr());
                 GL.IssuePluginEvent(renderEventFunc, (int)ApiRenderEvent.UpdateCubemapTexture);
             }
         }

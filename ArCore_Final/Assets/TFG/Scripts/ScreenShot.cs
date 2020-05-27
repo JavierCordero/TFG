@@ -22,7 +22,7 @@ public class ScreenShot : MonoBehaviour
 		if (CanTakeAnotherScreenshot)
 		{
 			CanTakeAnotherScreenshot = false;
-			ScreenCapture.CaptureScreenshot("Screenshot_" + pce.PrefabsToInstantiate[pce.actualPrefabToInstantiate].name + "_" + pce.MaxPointsToAddPerFrame.ToString() + "_" + pce.m_MaxPointCount.ToString() + ".jpg");
+			ScreenCapture.CaptureScreenshot("Screenshot_" + pce.PrefabsToInstantiate[pce.actualPrefabToInstantiate].name + "_" + pce.MaxPointsToAddPerFrame[pce.actualMaxPointPerFrameCount].ToString() + "_" + pce.m_MaxPointCount[pce.actualMaxPointCount].ToString() + ".jpg");
 			PhotoTakenAdvise.SetActive(true);
 			Invoke("FinishCooldown", ButtonCooldown);
 
