@@ -378,13 +378,10 @@ MonoBehaviour:
   - {fileID: 5237863466501953722, guid: 769d0862cb72a554abfd77402950d24f, type: 3}
   Sizes:
   - 0.01
+  - 0.02
+  - 0.03
+  - 0.04
   - 0.05
-  - 0.07
-  - 0.1
-  - 0.5
-  - 1
-  - 1.5
-  - 2
   actualShape: 0
   actualSize: 0
 --- !u!4 &383671813

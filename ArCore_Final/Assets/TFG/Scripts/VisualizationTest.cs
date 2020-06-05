@@ -79,7 +79,7 @@ public class VisualizationTest : MonoBehaviour
 
 				for(int k = 0; k < PointCloud.Count; k++)
 				{
-					aux.Add(Instantiate(Shapes[i], PointCloud[i], Quaternion.identity));
+					aux.Add(Instantiate(Shapes[i], PointCloud[k], Quaternion.identity));
 					aux[aux.Count - 1].transform.localScale = new Vector3(Sizes[j], Sizes[j], Sizes[j]);
 					yield return null;
 				}
