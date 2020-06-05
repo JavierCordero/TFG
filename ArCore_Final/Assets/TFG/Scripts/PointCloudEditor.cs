@@ -106,6 +106,7 @@ public class PointCloudEditor : MonoBehaviour
 	private float ColorPointSize = 0.01f;
 
 	List<Vector3> vertices = new List<Vector3>();
+	List<Vector3> oldVertices = new List<Vector3>();
 	List<GameObject> dots = new List<GameObject>();
 
 	public Text maxPointsText, maxPointsPerFrameText, PointShapeText;
@@ -142,26 +143,33 @@ public class PointCloudEditor : MonoBehaviour
 
 		m_CachedPoints = new LinkedList<PointInfo>();
 
-		CreateDots();
-
 		maxPointsText.text = m_MaxPointCount[actualMaxPointCount].ToString();
 		maxPointsPerFrameText.text = MaxPointsToAddPerFrame[actualMaxPointPerFrameCount].ToString();
 		PointShapeText.text = PrefabsToInstantiate[actualPrefabToInstantiate].name;
 
 	}
 
+	private void OnEnable()
+	{
+		CreateDots();
+	}
+
+
 	public void updateMaxPoints()
 	{
-		RemoveDots();
+		if (gameObject.activeSelf)
+		{
+			RemoveDots();
 
-		actualMaxPointCount++;
+			actualMaxPointCount++;
 
-		if (actualMaxPointCount >= m_MaxPointCount.Length)
-			actualMaxPointCount = 0;
+			if (actualMaxPointCount >= m_MaxPointCount.Length)
+				actualMaxPointCount = 0;
 
-		CreateDots();
+			CreateDots();
 
-		maxPointsText.text = m_MaxPointCount[actualMaxPointCount].ToString();
+			maxPointsText.text = m_MaxPointCount[actualMaxPointCount].ToString();
+		}
 	}
 
 	private void CreateDots()
@@ -185,25 +193,31 @@ public class PointCloudEditor : MonoBehaviour
 
 	public void updateMaxPointsPerFrame()
 	{
-		actualMaxPointPerFrameCount++;
-		if (actualMaxPointPerFrameCount >= MaxPointsToAddPerFrame.Length)
-			actualMaxPointPerFrameCount = 0;
+		if (gameObject.activeSelf)
+		{
+			actualMaxPointPerFrameCount++;
+			if (actualMaxPointPerFrameCount >= MaxPointsToAddPerFrame.Length)
+				actualMaxPointPerFrameCount = 0;
 
-		maxPointsPerFrameText.text = MaxPointsToAddPerFrame[actualMaxPointPerFrameCount].ToString();
+			maxPointsPerFrameText.text = MaxPointsToAddPerFrame[actualMaxPointPerFrameCount].ToString();
+		}
 	}
 
 	public void updatePointsShape()
 	{
-		RemoveDots();
+		if (gameObject.activeSelf)
+		{
+			RemoveDots();
 
-		actualPrefabToInstantiate++;
+			actualPrefabToInstantiate++;
 
-		if (actualPrefabToInstantiate >= PrefabsToInstantiate.Length)
-			actualPrefabToInstantiate = 0;
+			if (actualPrefabToInstantiate >= PrefabsToInstantiate.Length)
+				actualPrefabToInstantiate = 0;
 
-		CreateDots();
+			CreateDots();
 
-		PointShapeText.text = PrefabsToInstantiate[actualPrefabToInstantiate].name;
+			PointShapeText.text = PrefabsToInstantiate[actualPrefabToInstantiate].name;
+		}
 	}
 
 	/// <summary>
@@ -212,6 +226,8 @@ public class PointCloudEditor : MonoBehaviour
 	public void OnDisable()
 	{
 		_ClearCachedPoints();
+
+		RemoveDots();
 	}
 
 	/// <summary>
@@ -400,6 +416,14 @@ public class PointCloudEditor : MonoBehaviour
 			dots[i].SetActive(true);
 			dots[i].transform.position = vertices[i];
 		}
+
+		oldVertices = vertices;
+
+	}
+
+	public List<Vector3> getPointCloud()
+	{
+		return oldVertices;
 	}
 
 	/// <summary>
@@ -429,4 +453,5 @@ public class PointCloudEditor : MonoBehaviour
 			CreationTime = creationTime;
 		}
 	}
+
 }

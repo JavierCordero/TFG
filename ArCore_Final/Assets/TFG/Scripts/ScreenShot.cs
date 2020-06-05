@@ -5,7 +5,9 @@ using UnityEngine;
 public class ScreenShot : MonoBehaviour
 {
 	PointCloudEditor pce;
+	VisualizationTest VT;
 	public GameObject PhotoTakenAdvise;
+	public GameObject Warning;
 
 	public float ButtonCooldown = 1;
 
@@ -14,21 +16,40 @@ public class ScreenShot : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-		pce = FindObjectOfType<PointCloudEditor>();
+		VT = FindObjectOfType<VisualizationTest>();
 	}
 
 	public void TakeScreenShot()
 	{
 		if (CanTakeAnotherScreenshot)
 		{
-			CanTakeAnotherScreenshot = false;
-			ScreenCapture.CaptureScreenshot("Screenshot_" + pce.PrefabsToInstantiate[pce.actualPrefabToInstantiate].name + "_" + pce.MaxPointsToAddPerFrame[pce.actualMaxPointPerFrameCount].ToString() + "_" + pce.m_MaxPointCount[pce.actualMaxPointCount].ToString() + ".jpg");
-			PhotoTakenAdvise.SetActive(true);
-			Invoke("FinishCooldown", ButtonCooldown);
+			pce = FindObjectOfType<PointCloudEditor>();
+			if (pce)
+			{
+				CanTakeAnotherScreenshot = false;
+				ScreenCapture.CaptureScreenshot("Screenshot_" + pce.PrefabsToInstantiate[pce.actualPrefabToInstantiate].name + "_" + pce.MaxPointsToAddPerFrame[pce.actualMaxPointPerFrameCount].ToString() + "_" + pce.m_MaxPointCount[pce.actualMaxPointCount].ToString() + ".jpg");
+				PhotoTakenAdvise.SetActive(true);
+				Invoke("FinishCooldown", ButtonCooldown);
+			}
 
-			Debug.Log("CENTINELA: " + Application.persistentDataPath);
-
+			else
+			{
+				CanTakeAnotherScreenshot = false;
+				Warning.SetActive(true);
+				Invoke("cancelWarning", ButtonCooldown);
+				Invoke("FinishCooldown", ButtonCooldown);
+			}
 		}
+	}
+
+	private void cancelWarning()
+	{
+		Warning.SetActive(false);
+	}
+
+	public void VisualizationTestScreenShots(string shape, string size)
+	{
+		ScreenCapture.CaptureScreenshot("Screenshot_Shape_" + shape + "_Size_" + size + ".jpg");
 	}
 
 	private void FinishCooldown()
