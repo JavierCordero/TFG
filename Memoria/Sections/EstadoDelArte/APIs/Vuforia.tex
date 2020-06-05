@@ -1,0 +1,25 @@
+\parindent=0em
+\subsection{Vuforia}
+\noindent
+
+Vuforia Engine~\cite{vuforiaMain} es una plataforma enfocada al desarrollo de aplicaciones de realidad aumentada, se puede utilizar en todos los dispositivos móviles y tablets, además, permite a los desarrolladores añadir funcionalidades de visión por computador. Con Vuforia se pueden crear aplicaciones para dispositivos Android, iOS y para dispositivos Windows. \\
+
+Esta librería ofrece las siguientes herramientas: 
+
+\begin{itemize}
+    \item \textit{\textbf{Area Target Generator}}: Aplicación de escritorio que toma como entrada el escáner de un modelo 3D del entorno y genera un \textit{area target} (en el ámbito de Vuforia se refiere a un entorno donde se controla el \textit{tracking} de objetos y se permite colocar elementos).
+    
+    \item \textit{\textbf{Area Targets Test App}}: Se trata de una aplicación para poder comprobar la calidad del \textit{area target} generado al hacer el escáner de forma rápida, es decir, un área de pruebas de entornos 3D generados.
+    
+    \item \textit{\textbf{Model Target Generator}}: El \textit{Model Target Generator} es otra aplicación de escritorio mediante la cual se puede generar un \textit{area target} tomando como entrada un modelo 3D ya existente (en lugar de realizar un escáner). Esta aplicación soporta extensiones de archivo como \textit{.obj}, \textit{.fbx} o \textit{.stl} entre otros.
+    
+    \item \textit{\textbf{Model Target Test Application}}: En este caso se trata de una aplicación para móviles Android que se utiliza para evaluar \textit{model targets} (modelos que se utilizan para reconocer y hacer el \textit{tracking} de determinados elementos del mundo real gracias a su forma).
+    
+    \item \textit{\textbf{Vuforia Object Scanner}}: Aplicación de Android que se utiliza para escanear elementos del mundo real y generar archivos compatibles con Vuforia para definir un \textit{model target}.
+    
+    \item \textit{\textbf{Target Manager}}: Herramienta web que permite al desarrollador crear y manipular sus \textit{targets}.
+\end{itemize}
+
+Respecto al \textit{tracking}, Vuforia calcula la posición del usuario en función de detalles en el entorno tomados por la cámara (como los puntos característicos de ARCore), asimismo, utiliza la Unidad de Medición Inercial para controlar los 6DoF del dispositivo.\\
+
+A diferencia de ARCore, para utilizar este kit de desarrollo es necesario pagar alguno de sus planes. 

@@ -1,0 +1,33 @@
+\parindent=0em
+\subsection{ARCore}
+\noindent
+
+ARCore es un kit de desarrollo de Google \cite{ARCoreOverview} enfocado a construir experiencias de realidad aumentada en dispositivos Android. Tiene distintas APIs que permiten utilizar el teléfono para entender el mundo real e interactuar con él. ARCore utiliza tres pilares fundamentales para integrar el contenido virtual en el mundo físico:
+
+\begin{enumerate}[label=\arabic*)]
+    \item \textbf{\textit{Motion tracking}:} ARCore utiliza unos \textbf{puntos característicos} como elementos de referencia para detectar si se produce un cambio en la posición. Esta información se combina con los datos de la velocidad, orientación y fuerzas gravitacionales del aparato para estimar la posición y orientación de la cámara.
+    
+     \item \textbf{\textit{Environmental understanding}:} Esta tecnología utiliza concentraciones de estos puntos característicos mencionados anteriormente uniéndolos de manera horizontal o vertical para formar planos. Esta información se puede utilizar para colocar elementos en superficies lisas.
+     
+     \item \textbf{\textit{Light estimation}:} Para poder dar una iluminación a nuestros objetos virtuales acorde al mundo real, la plataforma detecta la información de la luz del entorno y realiza una estimación de la intensidad y el color.
+\end{enumerate}
+
+A la hora de colocar un elemento virtual en el mundo físico, cuando el usuario interactúa con la pantalla en un punto concreto, ARCore comprueba si existe algún plano o punto característico en ese punto y coloca el objeto ahí utilizando un \textbf{ancla} (posiciones en el mundo físico para mantener el control de los objetos en el tiempo).\\
+
+Por ejemplo, si colocamos un cubo en una puerta y nos desplazamos, al volver a apuntar a la puerta podremos ver que el cubo sigue ahí (gracias a los anclas). No solo se pueden utilizar estos anclas en un mismo dispositivo, sino que ARCore ofrece la \textit{ARCore Cloud Anchor API} mediante la cual se guarda la posición de los anclas en la nube, de tal forma que varios móviles pueden observar el mismo objeto virtual colocado por una persona. Esto permite compartir los entornos con varios usuarios simultáneamente.\\
+
+%https://developers.googleblog.com/2019/12/blending-realities-with-arcore-depth-api.html
+
+Recientemente ARCore ha introducido la \textit{ARCore Depth API} lo cual supone un gran avance a la hora de calcular profundidades en el mundo virtual ya que funciona con una única cámara (antes se requerían dispositivos con grandes capacidades hardware). La profundidad es calculada mediante un algoritmo que toma múltiples fotos de distintos ángulos y estima la distancia a cada píxel. Esto permite a los desarrolladores crear mapas de profundidad para generar un efecto de oclusión (sección~\ref{sec:oclusion}).\\
+
+Aunque esta API no es dependiente de cámaras o sensores específicos, la experiencia mejorará notablemente al utilizar dispositivos con un mejor hardware como sensores ToF (sensores que miden la profundidad en función a la distancia que tarda la emisión y recepción de un haz de luz infrarrojo) dado que permitirá activar la funcionalidad de la oclusión dinámica, es decir, poder hacer el efecto de oclusión con objetos en movimiento.\\
+
+Actualmente ARCore se puede utilizar en la plataforma de desarrollo Unity, en Unreal Engine o a través del entorno de desarrollo integrado Android Studio. Aunque ARCore es gratuito, no está soportado por todos los dispositivos móviles o tabletas, existe una lista de dispositivos soportados\footnotemark.\\
+
+\footnotetext{Dispositivos que soportan ARCore: \href{https://developers.google.com/ar/discover/supported-devices
+}{\nolinkurl{https://developers.google.com/ar/discover/supported-devices}}}
+
+Si se quiere desarrollar algo para iOS, la alternativa a ARCore se llama ARKit~\cite{arKitIntro}. Este kit de desarrollo de Apple ofrece opciones muy similares a ARCore como detección del entorno, cálculo de la profundidad o sesiones colaborativas, todo para dispositivos con iOS.
+
+
+

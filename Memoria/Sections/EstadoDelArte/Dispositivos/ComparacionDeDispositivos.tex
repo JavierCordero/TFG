@@ -1,3 +1,75 @@
 \parindent=0em
 \subsection{Comparación de dispositivos}
 \noindent
+
+Las características de los HMD son variadas, desde diferentes tipos de \textit{tracking} para crear un mapa del entorno y conocer la posición y orientación del usuario hasta utilizar controladores o \textit{hand tracking} (incluso ambos a la vez) para controlar las manos del usuario.\\ 
+
+En estas comparaciones se excluyen los teléfonos móviles (ya que son muy distintos a todos los demás respecto a características hardware) y el casco \textit{DAQRI Smart Helmet} (punto~\ref{subsec:DAQRISMART}) ya que este está enfocado a usos industriales y por ello sus componentes son notablemente diferentes a los demás (termómetro, barómetro, control por voz...).\\
+
+\begin{table}[ht]
+\centering
+\resizebox{0.9\textwidth}{!}{
+\begin{tabular}{ccccc}
+\toprule
+Dispositivo & FOV & Resolución   & IPD Ajustable                            & Independiente        \\ \midrule
+\textit{HMD Odyssey+}         & 110\degree  & 2.880x1.600  & \checkmark            &  $\times$ \\
+\textit{HP VR1000-127il}      & 90\degree   & 2.880×1.440  & $\times$              &  $\times$\\
+\textit{Magic Leap One}       & 50\degree   & 1.280 x 960  & -                     & \checkmark          \\
+\textit{ASUS HC102}           & 105° & 2.880×1.440  & \checkmark            &        $\times$ \\
+\textit{Acer AH101-D8EY}      & 100\degree  & 2.880×1.440  & \textbf{$\times$}     &     $\times$        \\
+\textit{Lenovo Explorer}      & 110\degree  & 2.880×1.440  & $\times$              &  $\times$\\
+\textit{Hololens 2}           & 43\degree   & 4.096×1080   & \checkmark            &  \checkmark \\ \bottomrule
+\end{tabular}}
+\caption{Comparación del apartado visual de los \textit{HMD}.}
+\label{cuadro:comparacionHMDVisual}
+\end{table}
+
+Como se puede observar en la tabla~\ref{cuadro:comparacionHMDVisual}, los dispositivos independientes, es decir, que poseen sus propios procesadores y tarjetas gráficas (no como los otros que utilizan los componentes de un ordenador para funcionar) tienen un FOV o campo de visión reducido respecto a los dispositivos dependientes, por ejemplo, resaltan los 50\degree  de las \textit{Magic Leap One} frente a los 100\degree  de las gafas Acer, en cambio, en el ámbito de los píxeles en pantalla, sobresalen notablemente las \textit{Hololens 2} con una resolución horizontal muy superior a las demás pese a ser un dispositivo independiente.\\
+
+Por otro lado, son cada vez más los dispositivos que permiten ajustar la distancia interpupilar para una experiencia del usuario satisfactoria sin fatiga ocular. Aun así, pese a su importancia, dispositivos como las \textit{Lenovo Explorer} no permiten al usuario ajustar este valor, por el contrario, destaca el sistema de regulación automático de las \textit{Hololens 2}.\\
+
+\begin{table}[ht]
+\resizebox{\textwidth}{!}{
+\begin{tabular}{ccc}
+\toprule
+Dispositivo     & Alimentación del HMD & Alimentación de los controladores               \\ \midrule
+\textit{HMD Odyssey+}     & Cable enchufado al PC              & 4 Pilas tipo AA                              \\
+\textit{HP VR1000-127il}  & Cable enchufado al PC              & 4 Pilas tipo AA                               \\
+\textit{Magic Leap One}         & Batería recargable (3h de uso)& Batería recargable (6h de uso)            \\
+\textit{ASUS HC102}       & Cable enchufado al PC              & 4 Pilas tipo AA                       \\
+\textit{Acer AH101-D8EY}  & 2 Pilas tipo AA                    & 4 Pilas tipo AA                              \\
+\textit{Lenovo Explorer}  & Cable enchufado al PC              & 4 Pilas tipo AA                        \\
+\textit{Hololens 2}       & Batería recargable (2h - 3h de uso)& No tiene controladores         \\ \bottomrule
+\end{tabular}}
+\caption{Comparación de baterías del casco y los controladores.}
+\label{cuadro:comparacionHMDyControladores}
+\end{table}
+
+Si comparamos la autonomía energética de los dispositivos, sobresale que por la parte de los controladores la mayoría utiliza 2 pilas de tipo AA en cada mando, sin embargo, las \textit{Hololens 2} se basan únicamente en su tecnología de \textit{hand tracking} para el control de las manos y las \textit{Magic Leap One} utilizan un único mando recargable para complementar su uso del \textit{hand tracking}. \\
+
+Respecto a la autonomía del casco, los dispositivos que utilizan la plataforma \textit{Windows Mixed Reality} utilizan la energía del ordenador para funcionar, al contrario lo hacen los dispositivos independientes que utilizan baterías recargables que permiten de 2 a 3 horas de uso o el dispositivo \textitAcer que utiliza 2 pilas de tipo AA ya que se conecta al ordenador mediante \textit{bluetooth}.\\
+
+\begin{table}[ht]
+\centering
+\resizebox{0.7\textwidth}{!}{
+\begin{tabular}{cccc}
+\toprule
+Dispositivo & Peso  & Precio (\$) & Independiente \\ \midrule
+\textit{HMD Odyssey+ }       & 644g  & 499   &  $\times$ \\ 
+\textit{HP VR1000-127il}      & 834g  & 400  &  $\times$\\  
+\textit{Magic Leap One}       & 316g  & 2.295& \checkmark  \\
+\textit{ASUS HC102  }         & 399g & 492   &        $\times$     \\
+\textit{Acer AH101-D8EY} & 848g  & 509       &     $\times$         \\
+\textit{Lenovo Explorer}      & 380g  & 200  &  $\times$\\     
+\textit{Hololens 2}           & 566g  & 3.500&  \checkmark \\   \bottomrule
+\end{tabular}}
+\caption{Pesos y precios de los dispositivos. }
+\label{cuadro:comparacionpesopreciosHMD}
+\end{table}
+
+
+Por último, en la tabla~\ref{cuadro:comparacionpesopreciosHMD} se puede observar la variabilidad entre los pesos de los dispositivos, en ella se incluye de nuevo la información sobre si son independientes o no para comodidad del lector. Aunque se podría imaginar que los dispositivos independientes deberían ser más pesados frente a los que se utilizan conectados a un ordenador, ya que en ellos se implementan los procesadores, tarjetas gráficas y otros elementos para su funcionamiento.\\ 
+
+Resalta el peso de las \textit{Magic Leap One} y las \textit{Hololens 2} frente a los demás cascos, también, se aprecia el gran peso en comparación a los otros del dispositivo de HP y de Acer pese a ser un dispositivo que utiliza los recursos de una CPU.\\
+
+En el ámbito del coste de los HMD, los dos dispositivos que no dependen de un ordenador tienen un precio que sobrepasa los otros dispositivos los cuales tienen un precio cercano entre ellos.
