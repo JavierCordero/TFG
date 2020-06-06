@@ -249,7 +249,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4497055725754670}
+    m_TransformParent: {fileID: 2002370586}
     m_Modifications:
     - target: {fileID: 3198301829583705004, guid: e5436238898e06a47bfa6fff6ff30c0e,
         type: 3}
@@ -370,6 +370,8 @@ MonoBehaviour:
   TestButton: {fileID: 1936384860}
   PointCloudButton: {fileID: 1283527320}
   NeedPointCloudWarning: {fileID: 575719086}
+  Boxes: {fileID: 2002370585}
+  BGRenderer: {fileID: 114876698841180088}
   Shapes:
   - {fileID: 5237863466501953722, guid: 01e6121c8fd66e24abc3ab5233b96b67, type: 3}
   - {fileID: 5237863466501953722, guid: 2fcd852ad386e6b4f9cae394cefdd7ac, type: 3}
@@ -861,7 +863,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4497055725754670}
+    m_TransformParent: {fileID: 2002370586}
     m_Modifications:
     - target: {fileID: 3198301829583705004, guid: e5436238898e06a47bfa6fff6ff30c0e,
         type: 3}
@@ -945,7 +947,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4497055725754670}
+    m_TransformParent: {fileID: 2002370586}
     m_Modifications:
     - target: {fileID: 3198301829583705004, guid: e5436238898e06a47bfa6fff6ff30c0e,
         type: 3}
@@ -1609,7 +1611,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4497055725754670}
+    m_TransformParent: {fileID: 2002370586}
     m_Modifications:
     - target: {fileID: 3198301829583705004, guid: e5436238898e06a47bfa6fff6ff30c0e,
         type: 3}
@@ -2604,7 +2606,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4497055725754670}
+    m_TransformParent: {fileID: 2002370586}
     m_Modifications:
     - target: {fileID: 3198301829583705004, guid: e5436238898e06a47bfa6fff6ff30c0e,
         type: 3}
@@ -3123,7 +3125,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4497055725754670}
+    m_TransformParent: {fileID: 2002370586}
     m_Modifications:
     - target: {fileID: 3198301829583705004, guid: e5436238898e06a47bfa6fff6ff30c0e,
         type: 3}
@@ -3872,12 +3874,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1983526533}
   m_CullTransparentMesh: 0
+--- !u!1 &2002370585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2002370586}
+  m_Layer: 0
+  m_Name: Boxes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2002370586
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002370585}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1549750018}
+  - {fileID: 74049671}
+  - {fileID: 59589756}
+  - {fileID: 799270585}
+  - {fileID: 850655243}
+  - {fileID: 861870000}
+  - {fileID: 1906252387}
+  m_Father: {fileID: 4497055725754670}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2045780900
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 4497055725754670}
+    m_TransformParent: {fileID: 2002370586}
     m_Modifications:
     - target: {fileID: 3198301829583705004, guid: e5436238898e06a47bfa6fff6ff30c0e,
         type: 3}
@@ -4260,13 +4299,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1549750018}
-  - {fileID: 74049671}
-  - {fileID: 59589756}
-  - {fileID: 799270585}
-  - {fileID: 850655243}
-  - {fileID: 861870000}
-  - {fileID: 1906252387}
+  - {fileID: 2002370586}
   m_Father: {fileID: 4442908850699780}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4280,7 +4313,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
