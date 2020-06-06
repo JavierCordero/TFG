@@ -6,7 +6,8 @@ using System.Collections;
 public class VisualizationTest : MonoBehaviour
 {
 	public GameObject[] HideObjects;
-	public GameObject TestButton, PointCloudButton, NeedPointCloudWarning;
+	public GameObject TestButton, PointCloudButton, NeedPointCloudWarning, Boxes;
+	public GoogleARCore.ARCoreBackgroundRenderer BGRenderer;
 
 	private PointCloudEditor PCE;
 	private PointCloudController PCC;
@@ -68,9 +69,6 @@ public class VisualizationTest : MonoBehaviour
 
 	IEnumerator StartTest()
 	{
-		int maxNumTest = Shapes.Length * Sizes.Length;
-		int currentTest = 1;
-
 		for(int i = 0; i < Shapes.Length; i++)
 		{
 			for(int j = 0; j < Sizes.Length; j++)
@@ -84,14 +82,36 @@ public class VisualizationTest : MonoBehaviour
 					yield return null;
 				}
 
+				yield return new WaitForEndOfFrame();
+
 				SS.VisualizationTestScreenShots(Shapes[i].name, Sizes[j].ToString());
+
+				yield return new WaitForEndOfFrame();
 
 				foreach (GameObject g in aux)
 					Destroy(g);
-
-				currentTest++;
 			}
 		}
+
+		Boxes.SetActive(false);
+
+		yield return new WaitForEndOfFrame();
+
+		SS.VisualizationTestScreenShots("Original", "Image");
+
+		yield return new WaitForEndOfFrame();
+
+		Boxes.SetActive(true);
+
+		BGRenderer.enabled = false;
+
+		yield return new WaitForEndOfFrame();
+
+		SS.VisualizationTestScreenShots("NoBG", "Cubes");
+
+		yield return new WaitForEndOfFrame();
+
+		BGRenderer.enabled = true;
 
 		EndVisualizationTest();
 		
