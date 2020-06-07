@@ -1,0 +1,77 @@
+\parindent=0em
+\subsection{Pruebas}
+\noindent
+
+Para poder obtener una serie de conclusiones acertadas, en primer lugar se han definido tres pruebas distintas. 
+
+En el primer escenario que tenemos en cuenta resumimos todas las variables a considerar (Forma de los puntos, máximo numero de puntos y máximo número de puntos a añadir por \textit{frame}). Con ello obtenemos la media de rendimiento de cada una de estas situaciones. Contamos con 5 tipos distintos de formas a considerar (Esfera, Cubo, Quad, Cilindro y Cápsula). Con cada una de estas formas realizamos pruebas combinando los distintos valores del máximo de puntos posibles (1000, 10000 y 20000) y el número máximo de puntos que podemos añadir por cada \textit{frame} (1, 10 o 100). Estos valores tanto para el número máximo de puntos como para el máximo de puntos añadidos por frame no son aleatorios. En el caso del máximo número de puntos posibles, 1000 es un valor que permanece neutro mientras que 20.000 es un valor demasiado alto que en muy pocas circunstancias se llega a alcanzar. En lo referente al máximo número de puntos por frame, se ha de tener en cuenta que el número aquí introducido influirá directamente en el tiempo que tarde en realizarse el bucle principal de la aplicación. A partir de 100 la aplicación tiene un rendimiento totalmente nulo y 1 es el valor por defecto y el mínimo que se puede aplicar. Esto deja un total de 45 pruebas a realizar por cada una de las perspectivas que se quieran tener en cuenta, que en este caso son dos.\\
+
+Una vez tenemos todos estos datos encapsulados, procedemos a hacer la media de rendimiento por cada una de las formas que hemos utilizado. Así tendremos una primera aproximación a los datos que queremos analizaremos más adelante.\\
+
+\begin{table}[ht]
+\centering
+\resizebox{0.6\textwidth}{!}{
+\begin{tabular}{cc}
+\toprule
+Forma & Media de rendimiento (FPS) \\ \toprule
+\textit{Esfera }       & 17.88   \\ \midrule
+\textit{Cubo}      & 15.72          \\ \midrule
+\textit{Quad}       & 15.27         \\ \midrule
+\textit{Cilindro}         & 11.33          \\ \midrule
+\textit{Cápsula} & 9.55   \\ \bottomrule
+\end{tabular}}
+\caption{Media de Frames Por Segundo (FPS) para cada una de las formas disponibles a la hora de realizar la oclusión. }
+\label{cuadro:comparacionpesopreciosHMD}
+\end{table}
+
+Ahora que tenemos esta primera aproximación en la que vemos lo que ha costado todo el proceso desde la generación de la nube de puntos hasta el renderizado de la misma, podemos fácilmente ver que la forma con la que obtenemos mejor rendimiento (de media) es la esfera. Existen casos en los que los Quads funcionan mejor que estas esferas u otras formas, pero tenemos que recordar que esto es solo una media de la primera aproximación. \\
+
+Este rendimiento está influido por la forma de la figura ya que en esta varía el número de polígonos a la hora de ser renderizada, por lo que el resultado final sólo es orientativo para proseguir con las pruebas. \\
+
+Sabiendo por lo tanto que la esfera es de promedio la forma con mejores resultados, la utilizaremos para realizar la siguiente prueba. Esta consiste en probar únicamente el tiempo en el que una nube de puntos tarda en estabilizarse. Para ello, tendremos en cuenta el instante en el que la aplicación se activa y mediante un botón controlaremos el instante en el que la nube de puntos ha alcanzado su estabilidad. Esta prueba la realizaremos únicamente con las medidas de máximo de puntos que se pueden añadir a la escena y con el máximo de puntos que se pueden añadir por frame, de nuevo con la forma de la esfera ya que es la que mejores resultados ha obtenido en la prueba anterior. Se realizará dos veces para obtener la media de ambas pruebas y poder tener en cuenta otros factores como la iluminación del entorno.\\
+
+\begin{table}[ht]
+\centering
+\resizebox{0.6\textwidth}{!}{
+\begin{tabular}{ccc}
+\toprule
+Máx. Puntos & Puntos por frame & Media de tiempo (s)\\ \toprule
+ 1.000 & 1 & unk.   \\ \midrule
+1.000 & 10 & unk.  \\ \midrule
+1.000 & 100 & unk.  \\ \midrule
+10.000  & 1 & unk. \\ \midrule
+10.000  & 10 & unk. \\ \midrule
+10.000  & 100 & unk. \\ \midrule
+20.000  & 1 & unk. \\ \midrule
+20.000  & 10 & unk. \\ \midrule
+20.000 & 100 & unk.  \\ \bottomrule
+\end{tabular}}
+\caption{Tiempo empleado por la aplicación para generar una nube de puntos estable. }
+\label{cuadro:comparacionpesopreciosHMD}
+\end{table}
+
+Realiazada esta prueba encontramos que la combinación que toma menos tiempo para realizar la nube de puntos es la que cuenta con un número máximo de X puntos y un número de Y puntos por frame. Esta medida en el futuro nos ayudará a decidir cual es la mejor manera de generar la oclusion dentro de la aplicación.\\
+
+Finalmente, la última prueba a realizar consistirá en, una vez tenemos dicha nube de puntos ya creada, la utilizaremos para probar distintas combinaciones con varias formas y tamaños para la oclusión. Se utilizara una nube de puntos generada, la cual se guardará como \textit{Game Object} dentro de nuestra aplicación. Tras tener la nube de puntos, la aplicación generará una serie de baterías de prueba, en las que irá intercalanado tanto forma como tamaño de los objetos que realizan la oclusión (los mencionados anteriormente) y generarán una serie de imágenes con los resultados de esta oclusión.\\ 
+
+Estas imágenes serán procesadas en Python, comparándolas con una imagen de cómo debería ser el estado óptimo de la oclusión generada en Photoshop. En ese punto tendremos el porcentaje de acierto que crea cada una de las combinaciones. Al igual que en la primera prueba, esta comprobación se realizará desde dos puntos de vista distintos para poder tener en cuenta otros factores como la iluminación de la escena.
+
+\begin{table}[ht]
+\centering
+\resizebox{0.4\textwidth}{!}{
+\begin{tabular}{ccc}
+\toprule
+Forma & Tamaño & Acierto (\%) \\ \toprule
+ 1.000 & 1 & unk.   \\ \midrule
+1.000 & 10 & unk.  \\ \midrule
+1.000 & 100 & unk.  \\ \midrule
+10.000  & 1 & unk. \\ \midrule
+10.000  & 10 & unk. \\ \midrule
+10.000  & 100 & unk. \\ \midrule
+20.000  & 1 & unk. \\ \midrule
+20.000  & 10 & unk. \\ \midrule
+20.000 & 100 & unk.  \\ \bottomrule
+\end{tabular}}
+\caption{Distintas formas para general la oclusión y tamaños con sus correspondientes porcentajes de acierto. }
+\label{cuadro:comparacionpesopreciosHMD}
+\end{table}

@@ -35,12 +35,13 @@
   
  \usepackage{fixltx2e} 
 \usepackage[spanish]{babel}
-\usepackage[table,xcdraw]{xcolor}
+\usepackage[table,xcdraw, dvipsnames]{xcolor}
 \usepackage[utf8]{inputenc}
 \usepackage[margin=1in]{geometry}
 \usepackage{lipsum}
 \usepackage{xparse}
 \usepackage{multirow}
+\usepackage{chngcntr}
 \usepackage{amsmath,amsthm,amssymb}
 \usepackage{booktabs}
 \usepackage{wrapfig}
@@ -57,9 +58,13 @@
 ]{doclicense}
 \pagestyle{fancy} 
 
+\usepackage{booktabs}
+\usepackage{textgreek}
 \usepackage{verbatim}
 \usepackage{eurosym}
 \usepackage{multicol}
+\usepackage{svg}
+\usepackage{amsmath}
 \usepackage{multirow}
 \usepackage{amsmath,amsthm,amssymb}
 \usepackage{mdframed}
@@ -73,7 +78,9 @@
 %\usetkzobj{all}
 \usepackage{pgfplots}
 \usepackage{fancyhdr}
+\usepackage{gensymb}
 \usepackage{varwidth,pst-tree,realscripts}
+\counterwithout*{footnote}{chapter}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %CAMBIAR X1 Z1 Y A1 para el documento de TFG
@@ -93,7 +100,7 @@
 
 
 
-\lhead[\grado]{\ntrabajo}
+\lhead[\grado]{}
 \rhead[\facultad]{UCM}
 \renewcommand{\headrulewidth}{0.5pt}
 \lfoot[\npersona]{}
@@ -108,9 +115,9 @@
 %\usetkzobj{all}
 \usepackage{pgfplots}
 \usepackage{graphicx}
+\usepackage{subcaption}
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows}
-\usepackage{subfigure}
 \usepackage{float}
 \usepackage{multicol}
 \pgfplotsset{compat=1.5}
@@ -520,7 +527,7 @@ title={#2},fonttitle=\bfseries,#1}
     \rule[0.5ex]{\linewidth}{2pt}\\
     [2mm]
     {\textbf{\LARGE{\ntrabajo}} }\\[3mm] %Titulo del TFG
-    
+    {\textbf{\LARGE{Mixed reality implementation for\\ navigation systems in mobile devices}} }
     \rule[0.5ex]{\linewidth}{1pt}\vspace*{-\baselineskip}\vspace{3.2pt}
     \rule[0.5ex]{\linewidth}{2pt}\\
     \vspace{6.5mm}
@@ -528,7 +535,7 @@ title={#2},fonttitle=\bfseries,#1}
     \vspace{6.5mm}
     {\large\textsc{Sergio Gavilán Fernández,\\ Javier Cordero Calvo}}\\ %Nombres de los autores
     \vspace{11mm}
-    \includegraphics[scale=0.3]{\print}\\ %Logo de la UCM
+    \includegraphics[scale=0.26]{\print}\\ %Logo de la UCM
     \vspace{6mm}
     {\large \grado\\    %Departamento del profesor que es el tutor
     \textsc{\facultad}}\\ %Facultad para la que se hace
