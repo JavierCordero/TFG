@@ -47,7 +47,7 @@ def process_data(path):
 			output.append(itemOutput)
 
 		#Guardamos cada uno de los items de manera independiente en un csv distinto para tener un backup de los datos
-		save_to_csv(item, output)
+		save_item_to_csv(item, output)
 
 	#Ahora pasamos a comparar todos los datos para sacar la media de cada figura
 	data = np.asarray(output)
@@ -62,16 +62,27 @@ def process_data(path):
 			i += 1
 	
 	i = 0
+
+	mediaResult = []
+
 	for k in result:
 		k = k / a
-		print(data[0][i][0:np.char.find(data[0][i], '_')] + " Media Structural Similarity: " +str(k))
+		form = data[0][i][0:np.char.find(data[0][i], '_')]
+		size = data[0][i][np.char.find(data[0][i], '_') + 1:np.char.find(data[0][i], ':')]
+		mediaResult.append(form + "_" + size + ":" + str(k))
 		i+= 1
+
+	save_final_result_to_csv(mediaResult)
 		
+def save_final_result_to_csv(mediaResult):
+	with open('Final_Results' + '.csv', 'w', newline='') as csvfile:
+		filewriter = csv.writer(csvfile, delimiter=',',
+							quotechar='|', quoting=csv.QUOTE_MINIMAL)
+		filewriter.writerow(["Forma", "Tamaño", "Acierto Medio"])
+		for out in mediaResult:
+			filewriter.writerow([out])
 
-	
-
-
-def save_to_csv(item, output):
+def save_item_to_csv(item, output):
 	with open('Results' + item + '.csv', 'w', newline='') as csvfile:
 		filewriter = csv.writer(csvfile, delimiter=',',
 								quotechar='|', quoting=csv.QUOTE_MINIMAL)
