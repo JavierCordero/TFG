@@ -57,28 +57,39 @@ public class VisualizationTest : MonoBehaviour
 
 		EndVisualizationTest();
 
-	} 
+	}
 
 	private void TrulyStart()
 	{
 		foreach (GameObject g in HideObjects)
 			g.SetActive(false);
 
-		StartCoroutine(StartTest());		
+		StartCoroutine(StartTest());
 	}
 
 	IEnumerator StartTest()
 	{
-		for(int i = 0; i < Shapes.Length; i++)
-		{
-			for(int j = 0; j < Sizes.Length; j++)
-			{
-				List<GameObject> aux = new List<GameObject>();
+		List<GameObject> aux = new List<GameObject>();
 
-				for(int k = 0; k < PointCloud.Count; k++)
+		for (int k = 0; k < PointCloud.Count; k++)
+		{
+			aux.Add(Instantiate(Shapes[0], PointCloud[k], Quaternion.identity));
+			yield return null;
+		}
+
+		for (int i = 0; i < Shapes.Length; i++)
+		{
+			Mesh m = Shapes[i].GetComponent<MeshFilter>().mesh;
+
+			for (int j = 0; j < Sizes.Length; j++)
+			{
+				Vector3 size = new Vector3(Sizes[j], Sizes[j], Sizes[j]);
+
+				for (int k = 0; k < PointCloud.Count; k++)
 				{
-					aux.Add(Instantiate(Shapes[i], PointCloud[k], Quaternion.identity));
-					aux[aux.Count - 1].transform.localScale = new Vector3(Sizes[j], Sizes[j], Sizes[j]);
+					aux[k].GetComponent<MeshFilter>().mesh = m;
+					aux[k].transform.localScale = size;
+
 					yield return null;
 				}
 
@@ -88,10 +99,12 @@ public class VisualizationTest : MonoBehaviour
 
 				yield return new WaitForEndOfFrame();
 
-				foreach (GameObject g in aux)
-					Destroy(g);
+
 			}
 		}
+
+		foreach (GameObject g in aux)
+			Destroy(g);
 
 		Boxes.SetActive(false);
 
@@ -114,7 +127,7 @@ public class VisualizationTest : MonoBehaviour
 		BGRenderer.enabled = true;
 
 		EndVisualizationTest();
-		
+
 	}
 
 	private void EndVisualizationTest()
