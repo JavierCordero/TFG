@@ -76,25 +76,22 @@ def process_data(path):
 		
 def save_final_result_to_csv(mediaResult):
 	with open('Final_Results' + '.csv', 'w', newline='') as csvfile:
-		filewriter = csv.writer(csvfile, delimiter=',',
-							quotechar='|', quoting=csv.QUOTE_MINIMAL)
-		filewriter.writerow(["Forma", "Tamaño", "Acierto Medio"])
+		filewriter = csv.writer(csvfile, delimiter=',')
+		filewriter.writerow(["Forma" "Tamaño" "Acierto Medio"])
 		for out in mediaResult:
 			filewriter.writerow([out])
 
 def save_item_to_csv(item, output):
 	with open('Results' + item + '.csv', 'w', newline='') as csvfile:
-		filewriter = csv.writer(csvfile, delimiter=',',
-								quotechar='|', quoting=csv.QUOTE_MINIMAL)
-		filewriter.writerow(["Forma", "Tamaño", "Acierto"])
+		filewriter = csv.writer(csvfile, delimiter=',')
+		filewriter.writerow(["Forma" "Tamaño" "Acierto"])
 		for out in output[len(output) - 1]:
 			filewriter.writerow([out])
 
 def get_Original_Image(path, item):
-
 	for root, dirs, files in os.walk(path + item):
 		for file in files:
-			if 'Original' in file:
+			if 'Desired' in file:
 				img = "/" + file
 	
 	return path + item + img

@@ -74,12 +74,17 @@ public class VisualizationTest : MonoBehaviour
 		for (int k = 0; k < PointCloud.Count; k++)
 		{
 			aux.Add(Instantiate(Shapes[0], PointCloud[k], Quaternion.identity));
-			yield return null;
+			//yield return null;
 		}
 
 		for (int i = 0; i < Shapes.Length; i++)
 		{
-			Mesh m = Shapes[i].GetComponent<MeshFilter>().mesh;
+			Mesh m = Shapes[i].GetComponent<MeshFilter>().sharedMesh;
+
+			for (int k = 0; k < PointCloud.Count; k++)
+			{
+				aux[k].GetComponent<MeshFilter>().mesh = m;
+			}
 
 			for (int j = 0; j < Sizes.Length; j++)
 			{
@@ -87,10 +92,7 @@ public class VisualizationTest : MonoBehaviour
 
 				for (int k = 0; k < PointCloud.Count; k++)
 				{
-					aux[k].GetComponent<MeshFilter>().mesh = m;
 					aux[k].transform.localScale = size;
-
-					yield return null;
 				}
 
 				yield return new WaitForEndOfFrame();
@@ -98,7 +100,6 @@ public class VisualizationTest : MonoBehaviour
 				SS.VisualizationTestScreenShots(Shapes[i].name, Sizes[j].ToString());
 
 				yield return new WaitForEndOfFrame();
-
 
 			}
 		}
