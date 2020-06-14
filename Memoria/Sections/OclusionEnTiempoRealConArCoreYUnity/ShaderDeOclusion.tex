@@ -1,15 +1,20 @@
 \parindent=0em
 \section{Shader de oclusión}
+\label{shaderOclusionSec}
 \noindent
+
+%https://docs.unity3d.com/Manual/SL-CullAndDepth.html
 
 El \textit{shader} de oclusión es la alternativa al \textit{shader} de profundidad. En este caso, se utiliza la nube de puntos de profundidad para generar una malla de oclusión (explicada en la sección~\ref{sec:oclusion}) y se le aplica dicho \textit{shader} a estas mallas para que actúen de planos que ocluyan los objetos virtuales.\\
 
 El \textit{shader} de oclusión se basa en 3 puntos fundamentales para su funcionamiento:
 
 \begin{itemize}
-    \item \textit{ZWrite}:
-    \item \textit{ZTest}:
-    \item \textit{ColorMask}:
+    \item \textit{\textbf{ZWrite}}: Este valor tiene que estar activo para que se tenga en cuenta los píxeles de profundidad del objeto. 
+    
+    \item \textit{\textbf{ZTest}}: Esta variable puede tomar distintos valores. Debe tener el valor \textit{LEqual} para que los elementos se pinten unos encima de otros en función de la distancia entre ellos (oculta los objetos que están por detrás del que porta el \textit{shader}).
+
+    \item \textit{\textbf{ColorMask}}: El valor de \textit{ColorMask} debe ser 0, se utiliza para que el color del objeto no se pinte en pantalla.
 \end{itemize}
 
 Para la prueba de este \textit{shader} en primer lugar se escanea el área para que ARCore genere la nube de puntos y una dichos puntos entre sí para generar planos con distintos ángulos en los que detecta objetos. Para visualizar mejor estas mallas de oclusión se les ha aplicado un contorno negro (figura~\ref{fig:mallaARCoreoclusion}).
@@ -19,11 +24,11 @@ Para la prueba de este \textit{shader} en primer lugar se escanea el área para 
     \hspace{-4mm}
     \begin{minipage}{0.5\textwidth}
         \centering
-        \includegraphics[scale=0.15]{Images/Shaders/oclusion (1).jpg}\\
+        \includegraphics[scale=0.12]{Images/Shaders/oclusion (1).jpg}\\
     \end{minipage}
     \begin{minipage}{0.5\textwidth}
         \centering
-        \includegraphics[scale=0.15]{Images/Shaders/oclusion (2).jpg}\\
+        \includegraphics[scale=0.12]{Images/Shaders/oclusion (2).jpg}\\
     \end{minipage}\\
     \caption[Generación de malla de ARCore con contorno]{Generación de malla de ARCore con contorno.}
     \label{fig:mallaARCoreoclusion}
@@ -33,7 +38,7 @@ Es necesario escanear el área varias veces para que ARCore genere todos los pla
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.2]{Images/Shaders/oclusionPrueba1.jpg}
+    \includegraphics[scale=0.18]{Images/Shaders/oclusionPrueba1.jpg}
     \caption{Efecto de oclusión generado con el \textit{shader} de oclusión.}
     \label{fig:oclusionp1}
 \end{figure} 

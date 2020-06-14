@@ -2,8 +2,8 @@
 \subsection{Introducción}
 \noindent
 
-Existen varias maneras de utilizar la nube de puntos para distintos fines. Para el propósito de este estudio, se hace uso de esta para generar la oclusión de los objetos virtuales con los que se encuentran en el mundo real. \\
+Teóricamente las nubes de puntos deberían funcionar sin demasiada complicación debido a la sencillez de su cálculo, pero en la práctica encontramos varios fallos que impiden su correcto funcionamiento.\\
 
-En primera instancia descartamos el uso de la \textit{malla} que genera automáticamente ARCore ya que esta es de difícil acceso y y contiene demasiadas imprecisiones para ocluir objetos. \\
+Existen varias maneras de utilizar la nube de puntos para distintos fines. Para el propósito de este estudio, se hace uso de esta para generar la oclusión de los objetos virtuales con los que se encuentran en el mundo real utilizando el \textit{shader de oclusión}. \\
 
-Utilizamos las posiciones generadas por ARCore para crear objetos propios y así determinar cual es el mejor método de obtener la oclusión. Este será el resultado de analizar el rendimiento de la nube de puntos como el porcentaje de acierto de la oclusión resultante.\\
+En este caso, se dará uso de las posiciones generadas por ARCore para crear objetos propios para la oclusión. Este será el resultado de analizar tanto el rendimiento de la nube de puntos (tanto en tiempo como en consumo de recursos) como el porcentaje de acierto de la oclusión resultante.\\

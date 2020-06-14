@@ -2,7 +2,29 @@
 \section{Plan de trabajo}
 \noindent
 
-El plan de trabajo
+Se puede dividir la planificación en dos grandes bloques: efecto de oclusión en teléfonos móviles y búsqueda de rutas.\\
+
+En primer lugar, en esta primera parte, se deberá investigar sobre el funcionamiento de ARCore a la hora de obtener información sobre la profundidad de los objetos del mundo físico en tiempo real utilizando una única cámara monocular.\\
+
+Después de conocer dicha información, se realizará una investigación leyendo libros y artículos sobre realidad mixta para conocer mas información sobre la oclusión. Es importante que estos conocimientos estén enfocados a teléfonos móviles y no utilicen cámaras distintas a una única cámara monocular, como se ha mencionado anteriormente.\\
+
+Para poner a prueba los conocimientos obtenidos anteriormente, en esta parte se implementarán 3 aplicaciones:
+
+\begin{itemize}
+    \item \textbf{Aplicación del \textit{shader} de profundidad:} Se desarrollará una aplicación para crear un mapa de profundidad (sección~\ref{sec:oclusion}).
+    
+    \item \textbf{Aplicación del \textit{shader} de oclusión:} Aplicación para probar la efectividad y precisión del \textit{shader} de oclusión (sección~\ref{shaderOclusionSec}).
+    
+    \item \textbf{Aplicación de la nube de puntos:} Esta aplicación se utilizará para comprobar la efectividad del \textit{shader} de oclusión a través de una nube de puntos (sección~\ref{sec:nubeDePuntos}).
+\end{itemize}
+
+Con estas tres aplicaciones se comprobará la precisión a la hora de generar un efecto de oclusión de distintas formas para quedarse con la más precisa y más eficiente.\\
+
+En la segunda parte, se averiguará qué funciones aporta el sistema de búsqueda Mapbox con Unity. Una vez obtenida dicha información, se tomará como objetivo desarrollar una aplicación para probar esas funcionalidades.\\
+
+Esta aplicación se implementará para obtener unas coordenadas GPS y transformar esa latitud y longitud en coordenadas de Unity. Una vez hecho esto, se transformará la posición obtenida en Unity a una posición en el entorno de ARCore. Todo esto se hará con el objetivo final de poder colocar un objeto virtual dadas unas coordenadas de latitud y longitud con exactitud.
+
+
 
 
 

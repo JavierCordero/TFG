@@ -1,0 +1,21 @@
+\parindent=0em
+\section{Sergio Gavilán Fernández}
+\noindent
+
+Mi primer contacto con las XR fue cuando realicé una aplicación de realidad aumentada para medir la accesibilidad. Realicé este trabajo para la Fundación ONCE utilizando la tecnología de ARCore, usando técnicas de realidad aumentada sin marcadores.\\
+
+Antes de empezar con el desarrollo investigué sobre las distintas tecnologías que permitían el uso de realidad aumentada en móviles. Descubrí distintas tecnologías aparte de ARCore (la cual ya conocíamos) como Kudan o Cordova. Después de esta investigación, y debido también a la experiencia que ya poseíamos de los años anteriores del grado, decidimos que lo mejor era utilizar ARCore con Unity.\\
+
+Como en los momentos iniciales del desarrollo no disponíamos de teléfonos móviles compatibles con ARCore, decidí investigar sobre la parte que no tenía relación con ARCore, los mapas. En este caso el primero que investigué fue Google Maps. Desarrollé un proyecto de Google Maps en Unity el cual no funcionaba debido a que aunque poseía una \textit{API Key}, era necesario añadir una dirección de facturación.\\
+
+Ya que también conocía Mapbox y ambos parecían ofrecer las mismas funcionalidades, aunque Mapbox sin necesidad de direcciones de facturación ni pagos, continué dejando de lado el proyecto de Google Maps y cambiándolo por un proyecto de Unity con Mapbox. En este punto conseguí hacer funcionar Mapbox pero dejé ese proyecto parado ya que en ese momento la facultad nos proporcionó un teléfono que soportaba ARCore.\\
+
+Mi compañero y yo decidimos que lo más importante del proyecto era generar un correcto efecto de oclusión, es por eso que me puse a colaborar con él en las pruebas del \textit{shader} de profundidad (sección~\ref{sec:shaderProfundidad}) dejando de lado el proyecto de Mapbox como he dicho anteriormente.\\
+
+Como no conseguíamos grandes avances, empecé a documentarme a través de libros y artículos sobre las XR, principalmente sobre la realidad mixta. Mientras Javier continuaba investigando el \textit{shader} de profundidad comencé a plasmar los resultados obtenidos en la fase de investigación mostrando las definiciones de las tres XR y los dispositivos compatibles con ellas en el capítulo~\ref{cap:ar_mr_vr}.\\
+
+Una vez descartado el \textit{shader} de profundidad me documenté sobre \textit{shaders} en Unity y desarrollé el \textit{shader} de oclusión. Una vez hecho esto, implementé una aplicación que utilizaba dicho \textit{shader} y posteriormente se utilizó para las pruebas del punto~\ref{shaderOclusionSec}.\\
+
+Al tener funcionando el \textit{shader} de oclusión y mi compañero trabajando con él, pude continuar el desarrollo sobre el proyecto de Mapbox con Unity. En este proyecto desarrollé una aplicación que permitía captar las coordenadas del teléfono móvil y transformarlas a coordenadas de ARCore. Esta aplicación se utilizó para colocar elementos virtuales en unas coordenadas dadas como se cuenta en la sección~\ref{pruebas geo arcore}.\\
+
+Por último, continué plasmando en el capítulo~\ref{cap:ar_mr_vr} las tecnologías necesarias para utilizar las XR así como escribiendo sobre los usos de dichas tecnologías en la actualidad. Todo esto después de una ardua investigación a través de artículos y libros (los cuales no existen en abundancia actualmente sobre realidad mixta). Finalmente, escribí mis conocimientos obtenidos a través de las pruebas con mapas en las distintas secciones sobre Google Maps y Mapbox.

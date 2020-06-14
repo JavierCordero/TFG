@@ -15,7 +15,7 @@ La espada de Damocles o \textit{Sword of Damocles} (1968)~\cite{swordOfDamocles}
     \label{fig:swordOfDamocles}
 \end{figure}
 
-Por otro lado, existen distintos tipos de sensores que aportan información sobre el entorno, aun así, los sensores más importantes son los que generan información sobre posición y orientación para conocer la pose y ubicación del usuario, este seguimiento del usuario se conoce como \textit{tracking}. Este seguimiento del usuario es necesario para una correcta superposición de los objetos virtuales en el mundo físico.\\
+Por otro lado, existen distintos tipos de sensores que aportan información sobre el entorno, aun así, los sensores más importantes son los que generan información sobre posición y orientación para conocer la pose y ubicación del usuario. Este seguimiento del usuario se conoce como \textit{tracking}, además, es necesario para una correcta superposición de los objetos virtuales en el mundo físico.\\
 
 Se pueden distinguir distintos tipos de \textit{tracking} en función de los componentes que se utilicen para generar la información referente al usuario. Esta búsqueda de la pose del individuo se puede dividir~\cite{tracking1} en las siguientes técnicas:  
 
@@ -39,11 +39,11 @@ Se pueden distinguir distintos tipos de \textit{tracking} en función de los com
 
     Para finalizar, se pueden distinguir 3 sensores comúnmente utilizados para el seguimiento del usuario: acelerómetro, giroscopio y brújula.\\
     
-    El acelerómetro es el sensor encargado de medir la aceleración de un dispositivo. La fuerza generada por el movimiento hace que se generen unas cargas eléctricas con las que se puede obtener la aceleración. Por otro lado, el giroscopio es un sensor mecánico que se utiliza para obtener la rotación del dispositivo. Por último, la brújula se utiliza para medir la orientación del dispositivo. Se basa en un componente sensible a los campos magnéticos terrestres siendo capaz de obtener nuestra orientación respecto al campo magnético terrestre.\\
+    El acelerómetro es el sensor encargado de medir la aceleración de un dispositivo. La fuerza generada por el movimiento hace que se generen unas cargas eléctricas con las que se puede obtener la aceleración. Por otro lado, el giroscopio es un sensor mecánico que se utiliza para obtener la rotación del dispositivo. Por último, la brújula se utiliza para medir la orientación del dispositivo. La brújula se basa en un componente sensible a los campos magnéticos terrestres siendo capaz de obtener nuestra orientación respecto al campo magnético terrestre.\\
     
-    Estos tres sensores se utilizan en conjunto para formar la unidad de medición inercial o IMU (del inglés Inertial Measurement Unit). La IMU es un dispositivo que mide la velocidad, aceleración y fuerzas gravitacionales de un dispositivo.
+    Estos tres sensores se utilizan en conjunto para formar la unidad de medición inercial o IMU (del inglés \textit{Inertial Measurement Unit}). La IMU es un dispositivo que mide la velocidad, aceleración y fuerzas gravitacionales de un dispositivo.
     
-    \item \textbf{Técnicas basadas en la visión:} Estas son las técnicas más comunes, en ellas, se utiliza la visión por computador para obtener información sobre el usuario. Dicha técnica de visión por computador se basa en encontrar una correspondencia entre puntos característicos de la imagen 2D y el entorno en 3D.\\ 
+    \item \textbf{Técnicas basadas en la visión:} Estas son las técnicas más comunes, en ellas, se utiliza la visión por computador~\cite{visionporcomputador} (transformación de datos de una cámara a una nueva representación) para obtener información sobre el usuario. Dicha técnica de visión por computador se basa en encontrar una correspondencia entre puntos característicos de la imagen 2D y el entorno en 3D.\\ 
     
     De esta forma, la pose del elemento del cual se quiere hacer el seguimiento, se puede obtener proyectando las coordenadas 3D de los puntos característicos sobre las coordenadas de la imagen 2D y minimizando la distancia hacia estos.
     
@@ -51,7 +51,7 @@ Se pueden distinguir distintos tipos de \textit{tracking} en función de los com
     
     Estas combinaciones permiten afinar el \textit{tracking}, por ejemplo, en una aplicación en el exterior en entornos como ciudades~\cite{hybridtrackingUrban} donde el nivel de distorsión es elevado y los sensores utilizados tradicionalmente (GPS y brújula magnética) son imprecisos.
     
-    Para finalizar, un ejemplo de modelo híbrido es el modelo que combina información obtenida por el giroscopio y visión por computador basada en líneas~\cite{robustHybridmodel}, en él, se hace uso del giroscopio para predecir la orientación y la posición de las líneas de las imágenes que luego es corregida por la visión por computador.
+    Para finalizar, un ejemplo de modelo híbrido es el modelo que combina información obtenida por el giroscopio y visión por computador basada en líneas~\cite{robustHybridmodel}. En este modelo se hace uso del giroscopio para predecir la orientación y la posición de las líneas de las imágenes que luego es corregida por la visión por computador.
     
 \end{itemize}
 

@@ -22,6 +22,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \LoadClass[12pt, a4paper, oneside, ,table]{book}
 \usepackage{ifthen}
+\usepackage[hypertexnames=false]{hyperref}
+
+\usepackage[spanish,english]{babel}
+
 \usepackage[tuenc]{fontspec}
 \usepackage{fontspec}
 \newcommand*{\imprimir}[1]{

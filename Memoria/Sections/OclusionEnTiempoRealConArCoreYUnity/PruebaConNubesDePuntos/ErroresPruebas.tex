@@ -1,0 +1,18 @@
+\parindent=0em
+\subsection{Errores de las pruebas}
+\noindent
+
+Para la generación de estas pruebas en una primera instancia la aplicación se ejecutó en un dispositivo móvil con ARCore, pero presentó varios errores durante el proceso:
+
+\begin{itemize}
+    \item \textbf{Tiempo de prueba}: Debido al gran número de pruebas que se debían realizar, la aplicación tomaba demasiado tiempo en llevarlas todas a cabo, pese a toda la optimización que se añadió dentro de la misma.
+    
+    \item \textbf{Batería del dispositivo}: La mayoría de dispositivos tiene un tiempo máximo de espera para que la pantalla se apague automáticamente. En los dispositivos probados el tiempo máximo era de 10 minutos, por lo que si la aplicación tardaba más en realizar las pruebas, estas quedaban invalidadas porque la aplicación se paraba. Por ello hubo que recurrir a una aplicación externa que mantuviese siempre encendida la pantalla del dispositivo. Esto, unido a la gran cantidad de recursos que necesitaba la propia prueba, hacía que la batería del teléfono se agotase al poco tiempo.
+    
+    \item \textbf{Temperatura del dispositivo}: Junto con lo anterior mencionado, al hacer tanto uso del dispositivo este sufría varias subidas de temperatura.Se redujo considerablemente tanto el número como tamaño de las pruebas.
+    
+    \item \textbf{Movimiento del dispositivo}: Para que el comparador de imágenes funcionase correctamente en Python, estas debían de ser lo más parecidas posibles. Tener el dispositivo en la mano era completamente inviable para la realización de las pruebas.
+    
+\end{itemize}
+
+Finalmente, la solución fue evitar que el dispositivo móvil realizase la batería de pruebas y delegase en otro equipo más potente. Gracias a la aplicación \textit{ARCore Instant Preview} y \textit{Unity} se logró este objetivo. Con ella, el móvil se conectaba a un ordenador portátil mediante USB. Este, con el proyecto de Unity abierto, hacía todo el trabajo de procesar la información mientras que el móvil lo único que realizaba era la emisión de los datos como posición o rotación del mismo. Con esto las pruebas que tardaban de promedio 1 hora o más en realizarse pasaron a una media de 5 segundos en estar completas, obteniendo el mismo resultado visual que se esperaba con el dispositivo móvil. \\

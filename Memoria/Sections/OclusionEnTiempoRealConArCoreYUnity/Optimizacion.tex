@@ -1,3 +1,23 @@
 \parindent=0em
 \section{Optimización}
 \noindent
+
+El trabajo realizado por la aplicación consiste en generar los puntos de la nube oclusión y renderizar esta así como medir todos los datos y cambiar entre las distintas pruebas. Esto hace que la aplicación no mantenga un \textit{frame rate} estable o que en general este sea demasiado bajo.\\
+
+Para optimizar todo este proceso los recursos que ARCore proporcionaba tenían que ser modificados. Ya que los \textit{scripts} que ARCore ofrecía no se pueden modificar directamente en el editor de Unity para realizar todas las pruebas, se generó uno nuevo, llamado \textit{Point Cloud Editor}. Este \textit{script} permite controlar de manera pública todos los parámetros necesarios para la generación de la nube de puntos.\\
+
+Ahora que existe un control sobre esta nube, se puede decidir cómo se generan los objetos dentro de la misma. Se crea una \textit{Pool} de puntos para agilizar todo el proceso de la creación de la nube, cosa que ARCore no hace de serie al generar en cada bucle de la aplicación una malla distinta. Esta \textit{Pool}, al comenzar la aplicación, genera \textit{Max Point Count} puntos, que es el número máximo de puntos del que va a disponer la nube de puntos y que está de manera pública en el editor. Una vez generados los puntos (todos desactivados), estos se activarán o desactivarán a medida que la nube de puntos vaya creciendo o decreciendo. Si se desean añadir más puntos, la aplicación generará de nuevo los necesarios. Si fuesen menos, borrará los que no se necesitasen para evitar el excesivo consumo de memoria.\\
+
+Ahora, en lugar de generar los puntos en cada bucle de aplicación, simplemente será necesario que se activen o desactiven y ponerlos en su posición correcta.\\
+
+El siguiente \textit{script} que requería una optimización fue el que realiza todas las pruebas de oclusión, llamado \textit{Visualization Test}. Este, al realizar un número bastante elevado de pruebas, debe ser lo más óptimo posible para que el tiempo de realización de estas no fuese excesivo.\\
+
+Para ello el bucle principal de la aplicación se transformó en una corrutina que controlaba la prueba. En esta primera aproximación, contaba con tres bucles únicos anidados. El exterior, controlaba el número de formas que había que probar, el intermedio todos los tamaños para dichas formas y finalmente el último recorría todos los puntos de la nube, instanciaba el objeto con la forma dada y el tamaño dado. Una vez estaban todos, realizaba la captura de pantalla pertinente, destruía todos los objetos y cambiaba el tamaño para volver a repetir el proceso con todas las formas y tamaños. Tampoco se dejaba de construir la nube de puntos de ARCore, por lo que en segundo plano esta seguía generando objetos a los que no se daba uso.\\
+
+Evidentemente este procedimiento era costoso y una primera aproximación para comprobar que, con pocos puntos, era viable realizar la prueba. Una vez crecía el tamaño de la prueba, la aplicación era incapaz de finalizar las pruebas.\\
+
+El siguiente paso fue en generar una nueva \textit{Pool} de objetos. Esta vez se instancia un objeto nada mas comenzar la corrutina por cada uno de los puntos de la nube, con una forma y un tamaño sin relevancia, y en la posición de cada punto. La nube de puntos que genera ARCore en este punto también se deja de usar y se elimina, ya que ahora tenemos guardada la nube de puntos en el estado para la prueba.\\
+
+En lugar de anidar los anteriores tres bucles, ahora existen cuatro bucles. Lo que en un principio parece contraproducente, resulta ser más eficiente que los tres bucles anteriores. En este nuevo estado, existe un bucle exterior, cuyo cometido es simplemente recorrer todas las formas que podemos intercambiar. Dentro de este, existen otros dos bucles. El primero recorre toda la nube de puntos y cambia el \textit{mesh} de cada uno de los objetos por el de la forma actual que se tiene que probar. El segundo, recorre todos los tamaños que se quieren probar. Este segundo a su vez incorpora otro bucle más, que de nuevo recorre toda la nube de puntos y simplemente cambia el tamaño de cada uno por el tamaño actual para la prueba. Una vez hecho todo esto, se genera una captura de pantalla y se vuelve a repetir todo el proceso para los tamaños y formas restantes.\\
+
+Se comprueba que esta forma es más eficiente ya que el acto de asignar un nuevo \textit{mesh} a cada forma y a la vez cambiar el tamaño de esta por cada punto por cada forma por cada tamaño es mucho más costoso que, en primer lugar, cambiar la forma una única vez y después por cada forma y por cada punto cambiar el tamaño.\\      

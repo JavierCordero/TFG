@@ -2,7 +2,30 @@
 \section{Work plan}
 \noindent
 
-El plan de trabajo
+Planning can be divided into two main blocks: occlusion effect on mobile phones and routes search. \\
+
+First of all, in this first part, it should be investigated how ARCore works to obtain information about the depth of objects in the physical world in real time using a single monocular camera. \\
+
+After knowing this information, an investigation will be carried out by reading books and articles on mixed reality to learn more about occlusion. It is important that this knowledge is focused on mobile phones which do not use other cameras than a single monocular camera, as mentioned above. \\
+
+To test the knowledge obtained previously, in this part 3 applications will be implemented:
+
+
+\begin{itemize}
+    \item \textbf{Depth shader application:} It will de developed an application to create a depth map (section~\ref{sec:oclusion}).
+    
+    \item \textbf{Occlusion shader application:} Application to test efectivity and precision of occlusion shader (section~\ref{shaderOclusionSec}).
+    
+    \item \textbf{Points cloud application:} This application will be used to test efectivity of the occlusion shader through a points cloud(section~\ref{sec:nubeDePuntos}).
+\end{itemize}
+
+With these three applications, the accuracy in generating an occlusion effect in different ways will be checked to keep the most accurate and most efficient one. \\
+
+In the second part, it will be found out what functions the Mapbox search system provides using Unity. Once such information has been obtained, the objective will be to develop an application to test these functionalities. \\
+
+This application will be implemented to obtain GPS coordinates and transform that latitude and longitude into Unity coordinates. Once this is done, the position obtained in Unity will be transformed to a position in the ARCore environment. All this will be done with the final objective of being able to place a virtual object given exact latitude and longitude coordinates.
+
+
 
 
 
