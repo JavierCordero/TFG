@@ -29,8 +29,6 @@ namespace Mapbox.Unity.MeshGeneration.Factories
 		[Range(1,10)]
 		private float UpdateFrequency = 2;
 
-
-
 		private Directions _directions;
 		private int _counter;
 
@@ -79,9 +77,11 @@ namespace Mapbox.Unity.MeshGeneration.Factories
 			{
 				wp[i] = _waypoints[i].GetGeoPosition(_map.CenterMercator, _map.WorldRelativeScale);
 			}
-			var _directionResource = new DirectionResource(wp, RoutingProfile.Driving);
+			var _directionResource = new DirectionResource(wp, RoutingProfile.Walking);
 			_directionResource.Steps = true;
 			_directions.Query(_directionResource, HandleDirectionsResponse);
+
+
 		}
 
 		public IEnumerator QueryTimer()

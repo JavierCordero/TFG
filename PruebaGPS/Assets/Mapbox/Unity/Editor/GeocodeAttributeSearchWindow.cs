@@ -154,7 +154,7 @@
 			}
 		}
 
-		void HandleUserInput(string searchString)
+		public void HandleUserInput(string searchString)
 		{
 			_features = new List<Feature>();
 			_isSearching = true;
@@ -165,6 +165,7 @@
 				MapboxAccess.Instance.Geocoder.Geocode(_resource, HandleGeocoderResponse);
 			}
 		}
+
 
 		void HandleGeocoderResponse(ForwardGeocodeResponse res)
 		{

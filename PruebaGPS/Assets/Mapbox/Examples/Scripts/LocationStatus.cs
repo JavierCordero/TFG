@@ -1,7 +1,8 @@
 ﻿namespace Mapbox.Examples
 {
 	using Mapbox.Unity.Location;
-	using Mapbox.Utils;
+    using Mapbox.Unity.Map;
+    using Mapbox.Utils;
 	using System.Collections;
 	using System.Collections.Generic;
 	using UnityEngine;
@@ -9,7 +10,7 @@
 
 	public class LocationStatus : MonoBehaviour
 	{
-
+		
 		[SerializeField]
 		Text _statusText;
 
