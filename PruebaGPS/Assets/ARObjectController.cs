@@ -38,53 +38,47 @@ public class ARObjectController : MonoBehaviour
 
 	public Text consoleText;
 	private List<Vector3> pathsPositions;
-	private Vector2d origiginUnityPos;
 	string coso = "";
+	string resp = "";
 
 	private void Update(){
-		// string s = "";
+        string s = "";
 
-		// Vector3 f = _map.Root.TransformPoint(Conversions.GeoToWorldPosition(deviceLocation.CurrentLocation.LatitudeLongitude.x, deviceLocation.CurrentLocation.LatitudeLongitude.y, _map.CenterMercator, _map.WorldRelativeScale).ToVector3xz());
-		// s+="Device ( " +f.x + ", " + f.y + ", " + f.z+")\n";
+        //Vector3 f = _map.Root.TransformPoint(Conversions.GeoToWorldPosition(deviceLocation.CurrentLocation.LatitudeLongitude.x, deviceLocation.CurrentLocation.LatitudeLongitude.y, _map.CenterMercator, _map.WorldRelativeScale).ToVector3xz());
+        s += "Device ( " + Camera.main.transform.position.x + ", " + Camera.main.transform.position.y + ", " + Camera.main.transform.position.z + ")\n";
 
-		// if(pathsPositions.Count>0)
-		// {
-		// 	foreach(Vector3 v in pathsPositions){
-		// 	s+="Punto de unity ( " + v.x + ", "+ v.y+ ", " + v.z + ")\n";
-		// }
-		// }
-		// consoleText.text = s;
-		// s = "";
-	}
+        consoleText.text = coso + s + resp;
+        s = "";
+    }
 
-	private void Start()
-	{
+	public void StartPath(GameObject text)
+    {
+		resp = "Starting path...";
+
+		string destiny = text.GetComponent<Text>().text;
+
 		_resource = new ForwardGeocodeResource("");
 		_directions = MapboxAccess.Instance.Directions;
 		lr = gameObject.AddComponent<LineRenderer>();
 		pathsPositions = new List<Vector3>();
 
-		StartPath();
-	}
-
-	private void StartPath()
-    {
-		HandleUserInput("Jesus Goldero 9 Madrid Spain");
+		HandleUserInput(destiny);
 	}
 
 	public void placeObjectInARWORLD(Vector2d coordinates)
 	{
+		Vector2d v = Conversions.StringToLatLon(originalCoordinates.x.ToString() + "," + originalCoordinates.y.ToString());
 
-		Vector3 _targetPosition = _map.Root.TransformPoint(Conversions.GeoToWorldPosition(coordinates.x, coordinates.y, _map.CenterMercator, _map.WorldRelativeScale).ToVector3xz());
+		Vector3 _targetPosition = _map.Root.TransformPoint(Conversions.GeoToWorldPosition(coordinates.x, coordinates.y, Conversions.LatLonToMeters(v)).ToVector3xz());
+
 		GameObject g = Instantiate(goToInstantiate, _targetPosition, Quaternion.identity);
-		pathsPositions.Add(_targetPosition);	
-		coso +="Nombre: " + g.name + "UC: " + g.transform.position + "SC: " + g.transform.localScale + "\n"; 
-		
-		//points.Add(new Vector2d(_targetPosition.x,_targetPosition.z));
+		pathsPositions.Add(_targetPosition);
+
+		coso +="Nombre: " + g.name + " UC: " + _targetPosition.ToString() + " COOR: " + coordinates.ToString() + "\n"; 
 	}
 
-    #region FinalPointCalculator
-    public void HandleUserInput(string searchString)
+	#region FinalPointCalculator
+	public void HandleUserInput(string searchString)
 	{
 		_features = new List<Feature>();
 
@@ -116,12 +110,8 @@ public class ARObjectController : MonoBehaviour
 
 	private void OriginAndDestinationCalc()
     {
-		originalCoordinates.x = 40.391302;//deviceLocation.CurrentLocation.LatitudeLongitude.x;
-		originalCoordinates.y = -3.695497;//deviceLocation.CurrentLocation.LatitudeLongitude.y;
-
-		Vector3 origiUnityPos = _map.Root.TransformPoint(Conversions.GeoToWorldPosition(originalCoordinates.x, originalCoordinates.y, _map.CenterMercator, _map.WorldRelativeScale).ToVector3xz());
-		origiginUnityPos.x = origiUnityPos.x;
-		origiginUnityPos.y = origiUnityPos.z;
+		originalCoordinates.x = deviceLocation.CurrentLocation.LatitudeLongitude.x; // 40.391302
+		originalCoordinates.y = deviceLocation.CurrentLocation.LatitudeLongitude.y; //-3.695497
 
 		finalCoordinates.x = _features[0].Center.x;
 		finalCoordinates.y = _features[0].Center.y;
@@ -131,7 +121,6 @@ public class ARObjectController : MonoBehaviour
 
 	void Query(Vector2d originCoordinates, Vector2d destinyCoordinates)
 	{
-
 		var wp = new Vector2d[2];
 
 		wp[0] = originCoordinates;
@@ -140,14 +129,18 @@ public class ARObjectController : MonoBehaviour
 		var _directionResource = new DirectionResource(wp, RoutingProfile.Walking);
 		_directionResource.Steps = true;
 		_directions.Query(_directionResource, HandleDirectionsResponse);
+
 	}
 
 	void HandleDirectionsResponse(DirectionsResponse response)
 	{
+
 		if (response == null || null == response.Routes || response.Routes.Count < 1)
 		{
 			return;
 		}
+
+		//Debug.Log(_map.CenterMercator);
 
 		DrawARObjects(response.Routes[0].Legs);
 	}
@@ -155,30 +148,33 @@ public class ARObjectController : MonoBehaviour
 
 	void DrawARObjects(List<Leg> legs)
     {
-		Vector2d v;
+        Vector2d v;
 
-		lr.positionCount = 0;
+        lr.positionCount = 0;
 
-		foreach (Leg l in legs)
-		{
-			lr.positionCount += l.Steps.Count;
-		}
-
-		//Debug.Log(lr.positionCount);
-
-		foreach (Leg l in legs)
+        foreach (Leg l in legs)
         {
-			foreach(Step s in l.Steps)
-            {
-				v.x = s.Maneuver.Location.x;
-				v.y = s.Maneuver.Location.y;
+            lr.positionCount += l.Steps.Count;
+        }
 
+        foreach (Leg l in legs)
+        {
+            foreach (Step s in l.Steps)
+            {
+                v.x = s.Maneuver.Location.x;
+                v.y = s.Maneuver.Location.y;
 
 				placeObjectInARWORLD(v);
-			}
+            }
         }
-		consoleText.text = coso;
 
-		lr.SetPositions(pathsPositions.ToArray());
+        lr.SetPositions(pathsPositions.ToArray());
+
+        int i = 0;
+        foreach (Vector3 p in pathsPositions.ToArray())
+        {
+            //coso += "LRP" + i + ": " + p + "\n";
+            i++;
+        }
 	}
 }

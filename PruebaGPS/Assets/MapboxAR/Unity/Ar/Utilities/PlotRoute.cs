@@ -59,13 +59,6 @@
 
 		void Update()
 		{
-#if !UNITY_EDITOR
-			if (!_isStable)
-			{
-				return;
-			}
-#endif
-
 			_elapsedTime += Time.deltaTime;
 			var offset = _target.localPosition - _lastPosition;
 			offset.y = 0;

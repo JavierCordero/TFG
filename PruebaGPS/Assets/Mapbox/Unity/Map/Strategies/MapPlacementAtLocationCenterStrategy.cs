@@ -1,5 +1,6 @@
 using Mapbox.Unity.Map.Interfaces;
 using Mapbox.Unity.Utilities;
+using System.Diagnostics;
 
 namespace Mapbox.Unity.Map.Strategies
 {
@@ -7,7 +8,9 @@ namespace Mapbox.Unity.Map.Strategies
 	{
 		public void SetUpPlacement(AbstractMap map)
 		{
+            
 			map.SetCenterMercator(Conversions.LatLonToMeters(map.CenterLatitudeLongitude));
+
 		}
 	}
 }
