@@ -36,7 +36,7 @@ namespace Mapbox.Unity.Utilities
 		void ClearLog()
 		{
 			_log = "";
-			_logText.text = _log;
+			//_logText.text = _log;
 			_logScroll.verticalNormalizedPosition = 0f;
 		}
 
@@ -47,7 +47,7 @@ namespace Mapbox.Unity.Utilities
 				_log = "";
 			}
 			_log += string.Format("<color={0}>{1}</color>\n", color, log);
-			_logText.text = _log;
+			//_logText.text = _log;
 			_logScroll.verticalNormalizedPosition = 0f;
 		}
 

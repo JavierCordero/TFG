@@ -7,6 +7,7 @@ using Mapbox.Unity.Map;
 using Mapbox.Geocoding;
 using Mapbox.Unity;
 using Mapbox.Directions;
+using UnityEngine.UI;
 
 public class ARObjectController : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class ARObjectController : MonoBehaviour
 	public GameObject goToInstantiate;
 
 	private Vector2d originalCoordinates, finalCoordinates;
+
+	private List<Vector2d> points = new List<Vector2d>();
 
     #region MapboxStuff
 
@@ -33,7 +36,26 @@ public class ARObjectController : MonoBehaviour
 
 	LineRenderer lr;
 
+	public Text consoleText;
 	private List<Vector3> pathsPositions;
+	private Vector2d origiginUnityPos;
+	string coso = "";
+
+	private void Update(){
+		// string s = "";
+
+		// Vector3 f = _map.Root.TransformPoint(Conversions.GeoToWorldPosition(deviceLocation.CurrentLocation.LatitudeLongitude.x, deviceLocation.CurrentLocation.LatitudeLongitude.y, _map.CenterMercator, _map.WorldRelativeScale).ToVector3xz());
+		// s+="Device ( " +f.x + ", " + f.y + ", " + f.z+")\n";
+
+		// if(pathsPositions.Count>0)
+		// {
+		// 	foreach(Vector3 v in pathsPositions){
+		// 	s+="Punto de unity ( " + v.x + ", "+ v.y+ ", " + v.z + ")\n";
+		// }
+		// }
+		// consoleText.text = s;
+		// s = "";
+	}
 
 	private void Start()
 	{
@@ -52,9 +74,13 @@ public class ARObjectController : MonoBehaviour
 
 	public void placeObjectInARWORLD(Vector2d coordinates)
 	{
+
 		Vector3 _targetPosition = _map.Root.TransformPoint(Conversions.GeoToWorldPosition(coordinates.x, coordinates.y, _map.CenterMercator, _map.WorldRelativeScale).ToVector3xz());
-		Instantiate(goToInstantiate, _targetPosition, Quaternion.identity);
-		pathsPositions.Add(_targetPosition);		
+		GameObject g = Instantiate(goToInstantiate, _targetPosition, Quaternion.identity);
+		pathsPositions.Add(_targetPosition);	
+		coso +="Nombre: " + g.name + "UC: " + g.transform.position + "SC: " + g.transform.localScale + "\n"; 
+		
+		//points.Add(new Vector2d(_targetPosition.x,_targetPosition.z));
 	}
 
     #region FinalPointCalculator
@@ -90,8 +116,12 @@ public class ARObjectController : MonoBehaviour
 
 	private void OriginAndDestinationCalc()
     {
-		originalCoordinates.x = deviceLocation.CurrentLocation.LatitudeLongitude.x;
-		originalCoordinates.y = deviceLocation.CurrentLocation.LatitudeLongitude.y;
+		originalCoordinates.x = 40.391302;//deviceLocation.CurrentLocation.LatitudeLongitude.x;
+		originalCoordinates.y = -3.695497;//deviceLocation.CurrentLocation.LatitudeLongitude.y;
+
+		Vector3 origiUnityPos = _map.Root.TransformPoint(Conversions.GeoToWorldPosition(originalCoordinates.x, originalCoordinates.y, _map.CenterMercator, _map.WorldRelativeScale).ToVector3xz());
+		origiginUnityPos.x = origiUnityPos.x;
+		origiginUnityPos.y = origiUnityPos.z;
 
 		finalCoordinates.x = _features[0].Center.x;
 		finalCoordinates.y = _features[0].Center.y;
@@ -134,7 +164,7 @@ public class ARObjectController : MonoBehaviour
 			lr.positionCount += l.Steps.Count;
 		}
 
-		Debug.Log(lr.positionCount);
+		//Debug.Log(lr.positionCount);
 
 		foreach (Leg l in legs)
         {
@@ -143,9 +173,11 @@ public class ARObjectController : MonoBehaviour
 				v.x = s.Maneuver.Location.x;
 				v.y = s.Maneuver.Location.y;
 
+
 				placeObjectInARWORLD(v);
 			}
         }
+		consoleText.text = coso;
 
 		lr.SetPositions(pathsPositions.ToArray());
 	}
